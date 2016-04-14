@@ -1,0 +1,113 @@
+﻿@model IPagedList<CarBrand>
+@*@using PagedList
+    @using PagedList.Mvc*@
+@{
+
+    ViewBag.Title = "车辆品牌型号管理";
+    ViewBag.SubTitle = "车辆品牌型号字典管理";
+
+    ViewBag.ParentTitle = "车辆品牌管理";
+    int iItem = ViewBag.NumberStart;
+}
+
+@section Styles{
+    @Styles.Render("~/Content/ColorBox/css1")
+    <style type="text/css">
+        td {
+            vertical-align: central;
+        }
+    </style>
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/ColorBox")
+    <script src="~/Scripts/UserJS/TableManage.js"></script>
+    <script type="text/javascript">
+        //$(function () {
+        //    TableManage.init();
+        //});
+        jQuery(document).ready(function () {
+
+            $("#improt").click(function () {
+                var excel = "ddd";
+                $.ajax({
+                    type: "get",
+                    url: "/Dic/ImportExcel",
+                    data: "Path=" + excel,
+                    beforeSend: function (xhr) {
+                        $('#WaitModal').modal({
+                            keyboard: false,
+                            backdrop: false
+                        });
+                    },
+                    success: function (data) {
+                        $('#WaitModal').modal('hide');
+                        if (data == "1") {
+                            alert("导入成功");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            <input type="checkbox" class="group-checkable" data-set=".checkboxes" />
+        </th>
+        <th>
+            序号
+        </th>
+        <th>
+            车辆品牌
+        </th>
+        @*<th>
+                图片
+            </th>*@
+        <th>
+            品牌中文首字母
+        </th>
+
+        <th>
+            <a href="#" onclick="TableManage.Edit('/Dic/PicTest', 500, 550)">添加</a> |
+            <a href="#" onclick="TableManage.BatchDelete('/Dic/CarBrandBatchDelete')">删除</a> |
+           <a href="#" onclick="TableManage.Edit('/Dic/Import', 450, 450)">车辆导入</a>
+           
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <input class="checkboxes" type="checkbox" value="@item.ID" />
+            </td>
+            <td>@(iItem++)</td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            @*<td>
+
+                    <img width="50" height="50" src="@Url.Action("GetImage", "Dic", new { item.ID })" />
+                </td>*@
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Sort)
+            </td>
+            <td>
+                <a href="#" onclick="TableManage.Edit('/Dic/PicTest/@item.ID',500,550)">编辑</a> |
+                <a href="#" onclick="TableManage.DicCarDelete('/Dic/CarBrandDelete/@item.ID')">删除</a> |
+                <a href="/Dic/CarSerieIndex?CarBrandId=@item.ID">管理</a>
+            </td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager(Model, pageIndex => Url.Action("CarBrandIndex", new { PageIndex = pageIndex }), new PagedListRenderOptions()
+{
+    DisplayPageCountAndCurrentLocation = true,
+    PageCountAndCurrentLocationFormat = Model.TotalItemCount == 0 ? "无记录" : "{0}/{1}",
+    UlElementClasses = new[] { "pagination pull-right" }
+})
+

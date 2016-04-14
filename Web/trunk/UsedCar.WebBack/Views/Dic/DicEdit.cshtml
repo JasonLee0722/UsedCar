@@ -1,0 +1,142 @@
+﻿@model Models.DicName
+
+@{
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
+    switch (Model.DicTypeCode)
+    {
+        case "Brand":
+            ViewBag.Title = "车辆品牌型号字典编辑";
+            ViewBag.SubTitle = "车辆品牌型号字典添加、修改";
+            break;
+        case "CarParts":
+            ViewBag.Title = "常见汽车配件字典编辑";
+            ViewBag.SubTitle = "常见汽车配件字典添加、修改";
+            break;
+        case "OBDFault":
+            ViewBag.Title = "OBD故障码字典编辑";
+            ViewBag.SubTitle = "OBD故障码字典添加、修改";
+            break;
+        default:
+            ViewBag.Title = "其它信息字典编辑";
+            ViewBag.SubTitle = "其它信息字典添加、修改";
+            break;
+    }
+    ViewBag.ParentTitle = "字典管理";
+}
+
+@section Styles{
+    <style type="text/css">
+        .has-feedback .form-control { padding-right: 5px; display: inline-block; }
+    </style>
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/JQValidation")
+    <script src="~/Scripts/UserJS/FormValidation.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var _DicTypeCode = $('#DicTypeCode').val();
+            var _rules = {
+                KeyValue: {
+                    required: true,
+                    maxlength: 50
+                },
+                Name: {
+                    required: true,
+                    maxlength: 50,
+                    remote: {
+                        url: "/Dic/validDicKeyUnique?DicTypeCode=" + _DicTypeCode,     //后台处理程序
+                        type: "get",               //数据发送方式
+                        dataType: "json"           //接受数据格式
+                    }
+                },
+                Remark: {
+                    maxlength: 200
+                }
+            };
+            _messages = {
+                Name: {
+                    remote: "此字典KEY已被占用！"
+                }
+            };
+            FormValidation.init(_rules, _messages);
+        });
+    </script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.DicTypeCode)
+    <div class="form-horizontal">
+        <h4>@ViewBag.Title</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="KeyValue">
+                键值
+            </label>
+            <div class="col-xs-10">
+                <input type="text" value="@Model.KeyValue" name="KeyValue" id="KeyValue" class="form-control single-line">
+                <span class="required"> * </span>
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="Name">
+                键名
+            </label>
+            <div class="col-xs-10">
+                @if (Model.ID == 0)
+                {
+                    <input type="text" value="@Model.Name" name="Name" id="Name" class="form-control single-line">
+                }
+                else
+                {
+                    @Html.HiddenFor(m => m.Name)
+                    <input type="text" value="@Model.Name" class="form-control single-line" disabled='disabled'>
+                }
+                <span class="required"> * </span>
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="Remark">
+                备注
+            </label>
+            <div class="col-xs-10">
+                <textarea class="form-control" name="Remark" id="Remark" rows="3">@Model.Remark</textarea>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="Sort">排序</label>
+            <div class="col-xs-10">
+                <input type="number" value="@Model.Sort" name="Sort" id="Sort" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="State">状态</label>
+            <div class="col-xs-10">
+                <label class="radio-inline">
+                    <input type="radio" name="State" id="StateRadio1" value="1" @(Model.State == 1 ? "checked='checked'" : "")> 启用
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="State" id="StateRadio2" value="0" @(Model.State == 0 ? "checked='checked'" : "")> 禁用
+                </label>
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+                <input type="submit" value="保存" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="alert alert-success feedinfo" role="alert"></div>
+    </div>
+}

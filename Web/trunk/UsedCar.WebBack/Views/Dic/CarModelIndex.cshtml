@@ -1,0 +1,85 @@
+﻿@model IPagedList<CarModel>
+@*@using PagedList
+    @using PagedList.Mvc*@
+@{
+
+    ViewBag.Title = "汽车型号管理";
+    ViewBag.SubTitle = "汽车型号字典管理";
+
+    ViewBag.ParentTitle = "汽车系列管理";
+    int iItem = ViewBag.NumberStart;
+    //----------定义导航菜单----------
+    var NavList = new Dictionary<string, string>();
+    NavList.Add("车辆品牌型号管理", "#");
+    NavList.Add("车辆品牌管理", "/Dic/CarBrandIndex");
+    NavList.Add("车辆系列管理", "/Dic/CarSerieIndex?CarBrandId=" + ViewBag.CarBrandId);
+    ViewBag.NavList = NavList;
+    //----------定义导航菜单----------
+}
+
+@section Styles{
+    @Styles.Render("~/Content/ColorBox/css1")
+    <style type="text/css">
+    </style>
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/ColorBox")
+    <script src="~/Scripts/UserJS/TableManage.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            TableManage.init();
+        });
+    </script>
+}
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            <input type="checkbox" class="group-checkable" data-set=".checkboxes" />
+        </th>
+        <th>
+            序号
+        </th>
+        <th>
+            车型名称
+        </th>
+
+        <th>
+            生产年份
+        </th>
+
+        <th>
+            <a href="#" onclick="TableManage.Edit('/Dic/CarModelEdit?CarSerieId=@ViewBag.CarSerieId', 450, 450)">添加</a> |
+            <a href="#" onclick="TableManage.BatchDelete('/Dic/CarModelBatchDelete')">删除</a>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <input class="checkboxes" type="checkbox" value="@item.ID" />
+            </td>
+            <td>@(iItem++)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+
+            <td>
+                <a href="#" onclick="TableManage.Edit('/Dic/CarModelEdit/@item.ID?CarSerieId=@item.SerieID',450,450)">编辑</a> |
+                <a href="#" onclick="TableManage.Delete('/Dic/CarModelDelete/@item.ID')">删除</a>
+
+            </td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager(Model, pageIndex => Url.Action("CarModelIndex", new { PageIndex = pageIndex, CarSerieId = ViewBag.CarSerieId }), new PagedListRenderOptions()
+{
+    DisplayPageCountAndCurrentLocation = true,
+    PageCountAndCurrentLocationFormat = Model.TotalItemCount == 0 ? "无记录" : "{0}/{1}",
+    UlElementClasses = new[] { "pagination pull-right" }
+})
+

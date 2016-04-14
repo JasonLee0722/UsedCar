@@ -1,0 +1,58 @@
+﻿            <!-- left menu starts -->
+<div class="col-sm-2 col-lg-2">
+    <div class="sidebar-nav">
+        <div class="nav-canvas">
+            <div class="nav-sm nav nav-stacked">
+            </div>
+            <ul class="nav nav-pills nav-stacked main-menu">
+                @*<li class="nav-header">Main</li>
+                <li class="nav-header hidden-md">Sample Section</li>*@
+                <li>
+                    <a class="ajax-link" href="/Article/Index"><i class="glyphicon glyphicon-bookmark"></i><span> 文章管理</span></a>
+                </li>
+                <li>
+                    <a class="ajax-link" href="/Owner/Index">
+                        <i class="glyphicon glyphicon-user"></i><span> 车主管理</span>
+                    </a>
+                </li>
+                <li class="accordion">
+                    <a href="#"><i class="glyphicon glyphicon-road"></i><span> 车辆管理</span></a>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="/Car/Index">车辆信息</a></li>
+                        <li><a href="/Car/CarCheckIndex">检测报告</a></li>
+                    </ul>
+                </li>
+                <li class="accordion">
+                    <a href="#"><i class="glyphicon glyphicon-shopping-cart"></i><span> 交易管理</span></a>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="/Trade/BuyIndex">买车</a></li>
+                        <li><a href="/Trade/SaleIndex">销售</a></li>
+                    </ul>
+                </li>
+                <li class="accordion">
+                    <a href="#"><i class="glyphicon glyphicon-cog"></i><span> 系统管理</span></a>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>@*<a href="/User/Index">用户管理</a>*@</li>
+                        <li><a href="/SysManage/SysUserIndex">用户管理</a></li>
+                        <li><a href="/SysManage/RoleIndex">权限管理</a></li>
+                        <li><a href="/SysManage/SysModuleIndex/0">功能模块管理</a></li>
+                        <li><a href="/SysManage/SysActionIndex">权限动作管理</a></li>
+                    </ul>
+                </li>
+                <li class="accordion">
+                    <a href="#"><i class="glyphicon glyphicon-book"></i><span> 字典管理</span></a>
+                    <ul class="nav nav-pills  nav-stacked">
+                        <li><a href="/Dic/TopicIndex">栏目管理</a></li>
+                        <li><a href="/Dic/CityIndex">城市管理</a></li>
+                        <li><a href="/Dic/CarConfigIndex">车辆配置管理</a></li>
+                        <li><a href="/Dic/CarBrandIndex">车辆品牌管理</a></li>
+                        <li><a href="/Dic/DicTypeIndex">其它字典</a></li>
+                    </ul>
+                </li>
+            </ul>
+            @*<label id="for-is-ajax" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>*@
+        </div>
+    </div>
+</div>
+<!--/span-->
+<!-- left menu ends -->

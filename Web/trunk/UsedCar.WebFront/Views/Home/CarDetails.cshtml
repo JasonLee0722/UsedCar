@@ -1,0 +1,1168 @@
+﻿@{
+    ViewBag.Title = "汽车详情";
+}
+@section Styles{
+<link href="~/Content/css/carDetails.css" rel="stylesheet" />
+}
+
+<!-- 头部信息  s -->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="carInfoArea">
+            <div class="top_leftBox">
+
+                <div class="mod18">
+                    <span id="prev" class="btn prev"></span>
+                    <span id="next" class="btn next"></span>
+                    <span id="prevTop" class="btn prev"></span>
+                    <span id="nextTop" class="btn next"></span>
+                    <div id="picBox" class="picBox">
+                        <ul class="cf">
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                            <li> <a href=""><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></a></li>
+                        </ul>
+                        <p><i class="fc-org">1</i>/14</p>
+                    </div>
+                    <div id="listBox" class="listBox">
+                        <ul class="cf">
+                            <li class="on"><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                            <li><i class="arr2"></i><img src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" alt=""></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+
+                @*<div class="thickdiv" style="display:none;"></div>
+                    <div class="thickbox" style="width:272px;height:90px;display:none;">
+                        <div style="width:250" class="thicktitle">
+                            <span>提示</span>
+                        </div>
+                        <div style="width:250px;height:40px;" id="" class="thickcon">已经到最后一张了！</div>
+                        <a class="thickclose" href="#">×</a>
+                    </div>*@
+            </div>
+            <div class="top_rightBox">
+                <div class="dt-titbox">
+                    <h1 class="dt-titletype" title="Jeep自由光 2014款 2.4 自动 豪华版(进口)">Jeep自由光 2014款 2.4 自动 豪华版(进口)</h1>
+                    <div class="dt-titleinfo clearfix" data-widget="app/ms_v2/vehicle/c2c/common.js#feedBack">
+                        <p class="car-error fr">
+                            <a href="javascript:void(0)" data-role="feed_back"><i></i>车源信息纠错</a>
+                        </p><p style="display: none" data-role="feed_back_source_url">http://www.guazi.com/su/2021489869x.htm</p>
+                        <p style="display: none" data-role="feed_back_source_cityid">67</p>
+                        <p></p>
+                        <ul class="title-info-r">
+
+                            <!-- <li><span class="bg-span" data-widget="app/ms_v2/common/detail_page.js#storeFavorite" data-premier="" data-ref='{"puid":"2021489869","title":"Jeep\u81ea\u7531\u5149 2014\u6b3e 2.4 \u81ea\u52a8 \u8c6a\u534e\u7248(\u8fdb\u53e3)","url":"http:\/\/www.ganji.com\/su\/2021489869x.htm"}'><a href="#" title=""><i class="ico-collect"></i>收藏</a></span></li>-->
+
+                            <li data-widget="app/ms_v2/common/detail_page.js#hoverWidget">
+                                <span class="bg-span">
+                                    <a href="#"><i class="ico-share"></i>分享</a>
+                                </span>
+                            </li>
+                            <li class="fav-new">
+                                <span class="bg-span ico-sc" data-premier="">
+                                    <a href="#" title=""><i class="ico-collect"></i>收藏</a>
+                                </span>
+                            </li>
+                        </ul>
+
+                        <span style="color:#999">车源号：</span><span style="color:#000">HC-1830386</span>
+                    </div>
+                </div>
+                <div class="basic-box">
+                    <div class="pricebox">
+                        <i class="ico-txt ico-mt">车主报价：</i>
+                        <span class="fc-org pricestype"><b class="f30 numtype">¥25.30</b>万</span>
+                        <span class="f14">
+                            新车价(含税)<font color="#f60">42.65万</font>,
+                            省<font color="#f60">17.35万</font>
+                        </span>
+                    </div>
+
+                    <!--贷款-->
+                    <div class="car-fuwu" data-puid="2021489869" gjalog="100000001100000100000010">
+                        <i class="ico-txt">分期付款：</i>
+                        <span>
+                            首付<em>7.59万</em>
+                            ，月供<em>6443元</em>
+                        </span>
+                        <a target="_blank" baidu_alog="pc_detail_tab&amp;click&amp;pc_detail_tab_fenqi_c" data-role="viewjr" source-id="223020" city-domain="su" href="javascript:void(0)">查看详情</a>
+                    </div>
+
+                    <!--服务费-->
+                    <div class="car-fuwu">
+                        <i class="ico-txt">服 务 费：</i>
+                        <span>7590元（车价x3%），送1年2万公里质保</span>
+                    </div>
+                </div>
+                <ul class="assort clearfix">
+                    <li class="one"><b>2015-01</b>上牌时间</li>
+                    <li><b>1.7万公里</b>里程</li>
+                    <li><b>自动</b>变速箱</li>
+                    <li class="em-sta" data-widget="app/ms_v2/vehicle/c2c/detail_page.js#detailHoverTips">
+                        <em class="tip-icon"></em>
+                        @*<p class="sta-tip-txt">
+                                <i></i>
+                                全国大部分地区国三及以下车源无法迁入，且各地车管所对排放标准认定有差异，外迁请详细咨询迁入地车管所。
+                            </p>*@
+                        <b>国三</b>排放标准
+                    </li>
+                    <li><b>苏州</b>上牌地</li>
+                </ul>
+                <p class="stipul-p">
+
+                    <!-- 车源售卖状态显示 -->
+                    <a href="javascript:void(0);" class="stipul-btn stipul-btn-gray">已售</a>
+                    @*<span class="f18">
+                            <i class="fc-org yahei">看车电话：</i>
+                            <b class="teltype js-change-phone">400-733-1199</b>
+                        </span>*@
+                </p>
+
+                <div class="combox indem-box">
+                    <h3 class="indem-tt f14">主流二手车直卖网已对该车辆进行检测，并将提供售后服务及保障。</h3>
+                    <ul class="indem-ul">
+                        <li>
+                            <span class="indem01"></span>
+                            <p class="f-type01">100%个人二手车</p>
+                            <p>没有中间环节，无差价</p>
+                        </li>
+                        <li>
+                            <span class="indem02"></span>
+                            <p class="f-type01">259项全面检测</p>
+                            <p>严苛检测标准，无事故</p>
+                        </li>
+                        <li>
+                            <span class="indem03"></span>
+                            <p class="f-type01">14天可退1年质保</p>
+                            <p>主流全程保障，无担忧</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 头部信息  e -->
+<!-- 检测结果  s -->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="laybox combox">
+            <div class="detect-bd clearfix">
+                <div class="detect-right fr">
+                    <span class="divis-pic" data-widget="app/ms_v2/vehicle/c2c/detail_page.js#evaluatorShow">
+                        <img data-role="evaluatorImg" data-src="http://sta.ganjistatic1.com/src/image/v5/vehicle/c2b/divsition_100_150.jpg" width="100" height="150" src="~/Content/images/divsition_100_150.jpg">
+                    </span>
+                    <p class="f-type02">郝灵军</p>
+                    <p>资深二手车检测师</p>
+                </div>
+                <div class="detect-left fl">
+                    <div class="detect-c" data-widget="app/ms_v2/vehicle/c2c/detail_page.js#scrollTo">
+                        <div class="detect-tt">
+                            <a href="#report" class="fr det-go">查看完整检测报告&gt;&gt;</a>
+                            <p class="f16 yahei">检测结果</p>
+                        </div>
+                        <div class="detect-info">
+                            <div class="detect-txt">车体结构完好，车辆骨架结构完好，未见碰撞损伤，排除泡水车，火烧车。排除事故车。外观漆面良好局部做漆，内饰干净整洁。电子设备均可正常使用，发动机变速箱工况正常。</div>
+                            <div class="detect-xm clearfix">
+                                <div class="detect-xm-c" data-widget="app/ms_v2/vehicle/c2c/detail_page.js#showItem">
+                                    <dl>
+                                        <dt>事故排查</dt>
+                                        <dd>
+                                            <span class="d-w1">排除重大碰撞（共18项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                        <dd>
+                                            <span class="d-w1">排除泡水（共8项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                        <dd>
+                                            <span class="d-w1">排除火烧（共2项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>外观内饰检测</dt>
+                                        <dd>
+                                            <span class="d-w1">外观修复检查（共51项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                        <dd>
+                                            <span class="d-w1">外观缺陷检查（共34项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                        <dd>
+                                            <span class="d-w1">内饰缺陷检查（共29项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>系统设备检测</dt>
+                                        <dd>
+                                            <span class="d-w1">安全系统检测（共6项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                        <dd>
+                                            <span class="d-w1">刹车系统检测（共4项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                        <dd>
+                                            <span class="d-w1">电子设备检测（共8项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>驾驶检测</dt>
+                                        <dd>
+                                            <span class="d-w1">启动与起步（共5项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                        <dd>
+                                            <span class="d-w1">加速与行驶（共8项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                        <dd>
+                                            <span class="d-w1">减速与制动（共4项）</span>
+                                            <span class="d-w2">
+                                                <i class="via-icon03"></i>
+                                            </span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 检测结果  e -->
+<!-- 详细信息  s -->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="laybox">
+            <div class="descrip-box">
+                <!--top 菜单-->
+                <div class="cont-tips-outer">
+                    <div class="cont-tips navbar-fixed" data-widget="app/ms_v2/vehicle/c2c/detail_page.js#fixNavbar">
+                        <a href="#" data-role="appoint" data-city-id="67" class="apt-btn fr" data-puid="2021489869" gjalog="100000001147000100000010">预约看车</a>
+                        @*<p class="fr check-tel">
+                                <span class="f18">
+                                    <span class="fc-org yahei">看车电话：</span>
+                                    <b class="teltype js-change-phone">400-733-6622</b>
+                                </span>
+                            </p>*@
+
+                        <ul class="cont-tips-qh clearfix">
+                            <li><a href="#base" data-role="item" data-id="#base" class="">基本信息</a></li>
+                            <li><a href="#picture" data-role="item" data-id="#picture" class="">车辆图片</a></li>
+                            <li><a href="#report" data-role="item" data-id="#report" class="">检测报告</a></li>
+                            <li><a href="#config" data-role="item" data-id="#config" class="active">配置参数</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="descrip">
+                    <!--车源基本信息-->
+                    <div class="modbox" id="base">
+                        <h3 class="yahei publicTit"><i class="deck"></i>基本信息</h3>
+                        <ul class="owner-infor clearfix">
+                            <li class="owner">
+                                <label>车主：</label>
+                                俞女士<i class="jg-line">|</i>
+                                个体<i class="jg-line">|</i>
+                                吴江
+                            </li>
+                            <li class="nianjian"><label>年检到期：</label>2017-1</li>
+                            <li class="baoxian"><label>交强险到期：</label>2017-1</li>
+                            <li class="baoxian"><label>商业险到期：</label>2017-1</li>
+                            <li class="guohu"><label>过户次数：</label>0</li>
+                        </ul>
+                        <p class="f-type03"><em></em>这款车外观还是比较耐看的，绚丽的前大灯，硬朗的车身线条，圆润饱满的车后部，看着很是耐看。车的动力比较强劲，加速时很稳，不会有侧移的现象，底盘扎实，开起来特别的稳。车子空间也是比较不错的，无论是头部空间还是腿部距离，都非常舒适，不会有任何压抑的感觉。车平时都是上下班代步开，也很注重保养，车况非常好。现因为个人原因出售爱车，欢迎对它感兴趣的朋友电话联系。</p>
+                    </div>
+
+                    <!--车辆图片-->
+                    <div class="modbox" id="picture">
+                        <h3 class="yahei publicTit"><i class="deck"></i>车辆图片</h3>
+                        <div class="dt-pictype" data-widget="app/ms_v2/vehicle/c2c/list_page.js#lazyLoadV2">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/ab0d163836a7446f00c00b130c2d24ef.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/ab0d163836a7446f00c00b130c2d24ef.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/b7c83dc5d93918ffae9ca38c6f2b0244.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/b7c83dc5d93918ffae9ca38c6f2b0244.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/c503b86c2915329b9ad8f48f962dccc5.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/c503b86c2915329b9ad8f48f962dccc5.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/0972861d242b237e67e8cef5ba03a29b.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/1f625e46ab3139bb4ee422d4aa09df9a.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/1f625e46ab3139bb4ee422d4aa09df9a.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/3a990ed31edbf9cd559f120273f0d08a.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/3a990ed31edbf9cd559f120273f0d08a.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/cbbfb106f4b6f88007cd75cf3c8a9ede.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/cbbfb106f4b6f88007cd75cf3c8a9ede.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/53e47ecd3df22b3dec0c49201e894a59.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/53e47ecd3df22b3dec0c49201e894a59.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/ff7af75e696b55b57a08aed5d9a5a733.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/ff7af75e696b55b57a08aed5d9a5a733.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/d0e9a5bb791f00bd2cf039aafa117302.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/d0e9a5bb791f00bd2cf039aafa117302.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/9e70bf8d99e083bb4c66af0a13586870.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/9e70bf8d99e083bb4c66af0a13586870.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/56b1bd95310604b737ba19abde61dd17.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/56b1bd95310604b737ba19abde61dd17.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/0c1d17bc82ee49cff0cefddf23c27f32.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/0c1d17bc82ee49cff0cefddf23c27f32.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/49d7422cc0420553b63c94246ef56b9e.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/49d7422cc0420553b63c94246ef56b9e.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/808bff2c938c9294031ef05579a33c16.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/808bff2c938c9294031ef05579a33c16.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/28937f665e0ec12bec947d40ff37e161.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/28937f665e0ec12bec947d40ff37e161.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/eded8e089d6715e4319351f10bf1bfd6.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/eded8e089d6715e4319351f10bf1bfd6.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/ce84f96aa453cd398b7a385bfcee6c22.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/ce84f96aa453cd398b7a385bfcee6c22.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/bd5708f409f570a51f640b2c993958ea.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/bd5708f409f570a51f640b2c993958ea.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/f470fd0082df76a1251d3a2f10d35fdb.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/f470fd0082df76a1251d3a2f10d35fdb.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/92480e3730870675a5ae963bdefe3a1f.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/92480e3730870675a5ae963bdefe3a1f.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/d9366dc6f4f478396cf245c7ce6a328f.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/d9366dc6f4f478396cf245c7ce6a328f.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/56dca083f342d1197ec57688c13d74b1.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/56dca083f342d1197ec57688c13d74b1.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/165710327395ffad562cce37225719e3.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/165710327395ffad562cce37225719e3.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/61354a977f899db9679d3049cd725ff0.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/61354a977f899db9679d3049cd725ff0.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/16151227b6c63b9586c71cc34daf4e1e.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/16151227b6c63b9586c71cc34daf4e1e.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/b5691c1aab3ddf8360f23597443ff3bb.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/b5691c1aab3ddf8360f23597443ff3bb.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                            <img width="580" height="400" class="js-lazy-load" src="http://image.guazistatic.com/gz01160319/17/06/1289e1e84d18bf84e0aca155fb5376a7.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" data-original="http://image.guazistatic.com/gz01160319/17/06/1289e1e84d18bf84e0aca155fb5376a7.jpg@base@tag=imgScale&amp;w=620&amp;h=430&amp;c=1&amp;m=2&amp;q=88" style="visibility: visible; display: inline;">
+                        </div>
+                    </div>
+
+                    <!--检测报告开始-->
+                    <div class="modbox1 combox" id="report">
+                        <div class="detecttitle">
+                            <h3 class="yahei f30">主流二手车直卖网车辆检测报告</h3>
+                            <span>检测时间：2016-03-19</span>
+                            <span>检测车型：<a href="/su/jeep/">Jeep</a>-<a href="/su/ziyouguang/">自由光</a>-2014款 2.4 自动 豪华版(进口)                            </span>
+                            <span>检测师：郝灵军 </span>
+                        </div>
+                        <div class="linetype"></div>
+                        <div class="headline-bd" id="accident">
+                            <span class="headline yahei">事故排查</span>
+                            <span class="f14">车辆骨架结构完好，未见碰撞损伤，排除泡水车，火烧车。</span>
+                        </div>
+                        <div class="detectBox clearfix">
+                            <div class="bitside fl">
+                                <div class="bitpic"><img src="~/Content/images/car-detection-new-2.png"></div>
+                                <div class="bitbox">
+                                    <p class="yahei f16 f-type04">排除泡水</p>
+                                    <table width="532" border="0" cellpadding="0" cellspacing="0" class="tableType">
+                                        <tbody>
+                                            <tr>
+                                                <th width="149">检查项</th>
+                                                <th width="117">结果</th>
+                                                <th width="149">检查项</th>
+                                                <th width="117">结果</th>
+                                            </tr>
+                                            <tr>
+                                                <td>发动机线束及橡胶制品</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td>后备箱边角及备胎槽</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>座椅滑轨内</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td>后排座椅坐垫底部</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>安全带底部</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td>全车地胶地毯</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>音响喇叭底部</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td>烟灰缸底座</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="bitside fr">
+                                <div class="bitbox">
+                                    <p class="yahei f16 f-type04">排除重大碰撞</p>
+                                    <table width="532" border="0" cellpadding="0" cellspacing="0" class="tableType">
+                                        <tbody>
+                                            <tr>
+                                                <th width="52">编号</th>
+                                                <th width="149">检查项</th>
+                                                <th width="65">结果</th>
+                                                <th width="52">编号</th>
+                                                <th width="149">检查项</th>
+                                                <th width="65">结果</th>
+                                            </tr>
+                                            <tr>
+                                                <td><i>1</i></td>
+                                                <td>左A柱</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td><i>2</i></td>
+                                                <td>右A柱</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><i>3</i></td>
+                                                <td>左B柱</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td><i>4</i></td>
+                                                <td>右B柱</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><i>5</i></td>
+                                                <td>左C柱</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td><i>6</i></td>
+                                                <td>右C柱</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><i>7</i></td>
+                                                <td>左前纵梁</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td><i>8</i></td>
+                                                <td>右前纵梁</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><i>9</i></td>
+                                                <td>左后纵梁</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td><i>10</i></td>
+                                                <td>右后纵梁</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><i>11</i></td>
+                                                <td>左前减震器悬挂部位</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td><i>12</i></td>
+                                                <td>右前减震器悬挂部位</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><i>13</i></td>
+                                                <td>左后减震器悬挂部位</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td><i>14</i></td>
+                                                <td>右后减震器悬挂部位</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><i>15</i></td>
+                                                <td>车身底板</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td><i>16</i></td>
+                                                <td>后备箱底板</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><i>17</i></td>
+                                                <td>防火墙</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td><i>18</i></td>
+                                                <td>车身左右对称性</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="bitbox">
+                                    <p class="yahei f16 f-type04">排除火烧</p>
+                                    <table width="532" border="0" cellpadding="0" cellspacing="0" class="tableType">
+                                        <tbody>
+                                            <tr>
+                                                <th width="149">检查项</th>
+                                                <th width="117">结果</th>
+                                                <th width="149">检查项</th>
+                                                <th width="117">结果</th>
+                                            </tr>
+                                            <tr>
+                                                <td>发动机线束及橡胶制品</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                                <td>车辆覆盖件及驾驶舱</td>
+                                                <td>
+                                                    <i class="via-icon03"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="headline-bd" id="surface">
+                            <span class="headline yahei">外观内饰检测</span>
+                            <span class="f14">此车漆面良好，无明显色差，局部有喷漆修复痕迹，内饰正常。</span>
+                        </div>
+                        <div class="detectBox clearfix">
+                            <div class="outward fl">
+                                <div class="appearance-img">
+                                    <div class="caption-bd">
+                                        <span><i class="rd gray-rd"></i>原厂漆</span>
+                                        <span><i class="rd gray-rd2"></i>漆面修复</span>
+                                        <span><i class="rd blue-rd"></i>钣金修复</span>
+                                        <span><i class="rd red-rd"></i>外观件更换</span>
+                                        <span><i class="rd n-rd"></i>查看缺陷照片</span>
+                                    </div>
+                                    <div class="appearance-con" data-widget="app/ms_v2/vehicle/c2c/detail_page.js#clueEvaluate">
+                                        <img src="~/Content/images/car-appearance.png">
+                                        <ul class="areabox"><li class="hood-0"></li><li class="fender_fl-0"></li><li class="fender_fr-0"></li><li class="roof-0"></li><li class="door_fl-0"></li><li class="door_fr-0"></li><li class="door_rl-1"></li><li class="door_rr-0"></li><li class="trunk_lid-0"></li><li class="fender_rl-0"></li><li class="fender_rr-0"></li><li class="a_pillar_l2-0"></li><li class="a_pillar_r2-0"></li><li class="b_pillar_l2-0"></li><li class="b_pillar_r2-0"></li><li class="c_pillar_l2-0"></li><li class="c_pillar_r2-0"></li></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="outward fr">
+                                <div class="exterior-img">
+                                    <img src="~/Content/images/car-exterior.jpg">
+                                    <div class="appearance-det" data-widget="app/ms_v2/vehicle/c2c/detail_page.js#clueEvaluate">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="headline-bd" id="system">
+                            <span class="headline yahei">系统设备检测</span>
+                            <span class="f14">仪表显示正常，安全系统、刹车系统无故障。</span>
+                        </div>
+                        <div class="detectBox clearfix">
+                            <div class="fl bitbox">
+                                <p class="yahei f16 f-type04">安全系统检测</p>
+                                <table width="532" border="0" cellpadding="0" cellspacing="0" class="tableType">
+                                    <tbody>
+                                        <tr>
+                                            <th width="149">检查项</th>
+                                            <th width="117">结果</th>
+                                            <th width="149">检查项</th>
+                                            <th width="117">结果</th>
+                                        </tr>
+                                        <tr>
+                                            <td>安全带系统</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                            <td>安全气囊系统</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>防抱死系统（ABS）</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                            <td>车身稳定系统（ESP）</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>轮胎胎压</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                            <td>儿童座椅接口</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fr bitbox">
+                                <p class="yahei f16 f-type04">电子设备检测</p>
+                                <table width="532" border="0" cellpadding="0" cellspacing="0" class="tableType">
+                                    <tbody>
+                                        <tr>
+                                            <th width="149">检查项</th>
+                                            <th width="117">结果</th>
+                                            <th width="149">检查项</th>
+                                            <th width="117">结果</th>
+                                        </tr>
+                                        <tr>
+                                            <td>车灯系统</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                            <td>仪表指示灯</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>雨刷器</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                            <td>空调系统</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>多媒体系统</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                            <td>电动车窗</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>中控锁</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                            <td>座椅电动功能</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fl bitbox">
+                                <p class="yahei f16 f-type04">刹车系统检测</p>
+                                <table width="532" border="0" cellpadding="0" cellspacing="0" class="tableType">
+                                    <tbody>
+                                        <tr>
+                                            <th width="149">检查项</th>
+                                            <th width="117">结果</th>
+                                            <th width="149">检查项</th>
+                                            <th width="117">结果</th>
+                                        </tr>
+                                        <tr>
+                                            <td>刹车片</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                            <td>制动卡钳</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>驻车系统</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                            <td>制动液</td>
+                                            <td>
+                                                <i class="via-icon03"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="headline-bd" id="drive">
+                            <span class="headline yahei">驾驶检测</span>
+                            <span class="f14">发动机运转平稳，变速器换档平顺。</span>
+                        </div>
+                        <div class="detectBox clearfix">
+                            <ul class="pilotstep">
+                                <li class="one">
+                                    <h3 class="yahei f16">启动</h3>
+                                    <div class="stepfont">
+                                        <p>
+                                            <span>发动机</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>制动系统</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="yahei f16">起步</h3>
+                                    <div class="stepfont">
+                                        <p>
+                                            <span>发动机</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>变速箱</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>悬挂系统</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="yahei f16">加速</h3>
+                                    <div class="stepfont">
+                                        <p>
+                                            <span>发动机</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>变速箱</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>传动系统</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="yahei f16">匀速行驶</h3>
+                                    <div class="stepfont">
+                                        <p>
+                                            <span>发动机</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>变速箱</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>悬挂系统</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>转向系统</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>制动系统</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="yahei f16">减速与制动</h3>
+                                    <div class="stepfont">
+                                        <p>
+                                            <span>发动机</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>变速箱</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>传动系统</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                        <p>
+                                            <span>悬挂系统</span>
+                                            <i class="via-icon03"></i>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--检测报告结束-->
+                    <!-- 帖子配置参数信息 -->
+                    <div class="modbox" id="config">
+                        <h3 class="yahei publicTit"><i class="deck"></i>配置参数</h3>
+                        <div class="con-param">
+                            <div class="con-param-s clearfix">
+                                <div class="c-param-in">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="param-table">
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="2">基本参数</th>
+                                            </tr>
+                                            <tr><td width="50%" class="td1">厂商</td><td width="50%" class="td2">克莱斯勒</td></tr>
+                                            <tr><td width="50%" class="td1">级别</td><td width="50%" class="td2">-</td></tr>
+                                            <tr><td width="50%" class="td1">发动机</td><td width="50%" class="td2">2.4 L 177马力 L4</td></tr>
+                                            <tr><td width="50%" class="td1">变速箱</td><td width="50%" class="td2">9档手自一体变速器</td></tr>
+                                            <tr><td width="50%" class="td1">车身结构</td><td width="50%" class="td2">-</td></tr>
+                                            <tr><td width="50%" class="td1">长*宽*高(mm)</td><td width="50%" class="td2">4624/1859/1680</td></tr>
+                                            <tr><td width="50%" class="td1">轴距(mm)</td><td width="50%" class="td2">2700</td></tr>
+                                            <tr><td width="50%" class="td1">行李箱容积(L)</td><td width="50%" class="td2">-</td></tr>
+                                            <tr><td width="50%" class="td1">整备质量(kg)</td><td width="50%" class="td2">1779</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="c-param-in">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="param-table">
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="2">发动机参数</th>
+                                            </tr>
+                                            <tr><td width="50%" class="td1">排量(L)</td><td width="50%" class="td2">2.4 </td></tr>
+                                            <tr><td width="50%" class="td1">进气形式</td><td width="50%" class="td2">自然吸气</td></tr>
+                                            <tr><td width="50%" class="td1">气缸</td><td width="50%" class="td2">L4</td></tr>
+                                            <tr><td width="50%" class="td1">最大马力(Ps)</td><td width="50%" class="td2">177</td></tr>
+                                            <tr><td width="50%" class="td1">最大扭矩(N*m)</td><td width="50%" class="td2">229</td></tr>
+                                            <tr><td width="50%" class="td1">燃料类型</td><td width="50%" class="td2">汽油</td></tr>
+                                            <tr><td width="50%" class="td1">燃油标号</td><td width="50%" class="td2">93#</td></tr>
+                                            <tr><td width="50%" class="td1">供油方式</td><td width="50%" class="td2">多点电喷</td></tr>
+                                            <tr title="各地车管所对排放标准认定有差异，结果仅供参考，外迁请详细咨询迁入地车管所。"><td width="50%" class="td1">排放标准</td><td width="50%" class="td2">国三</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="c-param-in">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="param-table">
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="2">底盘及制动</th>
+                                            </tr>
+                                            <tr><td width="50%" class="td1">驱动方式</td><td width="50%" class="td2">适时四驱</td></tr>
+                                            <tr><td width="50%" class="td1">助力类型</td><td width="50%" class="td2">电动助力</td></tr>
+                                            <tr><td width="50%" class="td1">前悬挂类型</td><td width="50%" class="td2">麦弗逊式独立悬挂</td></tr>
+                                            <tr><td width="50%" class="td1">后悬挂类型</td><td width="50%" class="td2">多连杆式独立悬挂</td></tr>
+                                            <tr><td width="50%" class="td1">前制动类型</td><td width="50%" class="td2">通风盘式</td></tr>
+                                            <tr><td width="50%" class="td1">后制动类型</td><td width="50%" class="td2">盘式</td></tr>
+                                            <tr><td width="50%" class="td1">驻车制动类型</td><td width="50%" class="td2">-</td></tr>
+                                            <tr><td width="50%" class="td1">前轮胎规格</td><td width="50%" class="td2">225/55 R18</td></tr>
+                                            <tr><td width="50%" class="td1">后轮胎规格</td><td width="50%" class="td2">225/55 R18</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="c-param-in">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="param-table">
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="2">安全配置</th>
+                                            </tr>
+                                            <tr><td width="50%" class="td1">主副驾驶安全气囊</td><td width="50%" class="td2">标配/标配</td></tr>
+                                            <tr><td width="50%" class="td1">前后排侧气囊</td><td width="50%" class="td2">标配/无</td></tr>
+                                            <tr><td width="50%" class="td1">前后排头部气囊</td><td width="50%" class="td2">标配/标配</td></tr>
+                                            <tr><td width="50%" class="td1">胎压监测</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">车内中控锁</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">儿童座椅接口</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">无钥匙启动</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">防抱死系统(ABS)</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">车身稳定控制(ESP)</td><td width="50%" class="td2">标配</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="c-param-in">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="param-table">
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="2">外部配置</th>
+                                            </tr>
+                                            <tr><td width="50%" class="td1">电动天窗</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">全景天窗</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">氙气大灯</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">LED大灯</td><td width="50%" class="td2">无</td></tr>
+                                            <tr><td width="50%" class="td1">自动头灯</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">前雾灯</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">前/后电动车窗</td><td width="50%" class="td2">标配/标配</td></tr>
+                                            <tr><td width="50%" class="td1">后视镜电动调节</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">后视镜加热</td><td width="50%" class="td2">标配</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="c-param-in">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="param-table">
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="2">内部配置</th>
+                                            </tr>
+                                            <tr><td width="50%" class="td1">真皮座椅</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">座椅加热</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">座椅通风</td><td width="50%" class="td2">无</td></tr>
+                                            <tr><td width="50%" class="td1">多功能方向盘</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">定速巡航</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">GPS导航</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">倒车雷达</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">倒车影像系统</td><td width="50%" class="td2">标配</td></tr>
+                                            <tr><td width="50%" class="td1">空调控制方式</td><td width="50%" class="td2">自动</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- 详细信息  e -->
+<!-- 猜你喜欢  s-->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="guessbox">
+            <h3 class="yahei publicTit"><i class="deck"></i>这些车你也会感兴趣</h3>
+            <div class="row">
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-xs-3">
+                        <a href="#" class="thumbnail">
+                            <img src="http://scs.ganjistatic1.com/gjfs16/M07/28/B8/CgEHQlYpDNb3enYrABcunhG69OE138_600-400c_8-1.jpg" style="height: 180px; width: 100%; display: block;" alt="">
+                        </a>
+                        <div class="caption">
+                            @*25.30万 42.60万*@
+                            <a class="info_title">Jeep自由光 2014款 2.4 自动 豪华版</a>
+                            <p class="info_gray">2015年1月上牌 | 行驶1.7万公里</p>
+                            <p class="info_price">
+                                <span>25.30万</span>
+                                <s>42.60万</s>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="#" class="thumbnail">
+                            <img src="http://scs.ganjistatic1.com/gjfs16/M07/28/B8/CgEHQlYpDNb3enYrABcunhG69OE138_600-400c_8-1.jpg" style="height: 180px; width: 100%; display: block;" alt="">
+                        </a>
+                        <div class="caption">
+                            @*25.30万 42.60万*@
+                            <a class="info_title">Jeep自由光 2014款 2.4 自动 豪华版</a>
+                            <p class="info_gray">2015年1月上牌 | 行驶1.7万公里</p>
+                            <p class="info_price">
+                                <span>25.30万</span>
+                                <s>42.60万</s>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="#" class="thumbnail">
+                            <img src="http://scs.ganjistatic1.com/gjfs16/M07/28/B8/CgEHQlYpDNb3enYrABcunhG69OE138_600-400c_8-1.jpg" style="height: 180px; width: 100%; display: block;" alt="">
+                        </a>
+                        <div class="caption">
+                            @*25.30万 42.60万*@
+                            <a class="info_title">Jeep自由光 2014款 2.4 自动 豪华版</a>
+                            <p class="info_gray">2015年1月上牌 | 行驶1.7万公里</p>
+                            <p class="info_price">
+                                <span>25.30万</span>
+                                <s>42.60万</s>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="#" class="thumbnail">
+                            <img src="http://scs.ganjistatic1.com/gjfs16/M07/28/B8/CgEHQlYpDNb3enYrABcunhG69OE138_600-400c_8-1.jpg" style="height: 180px; width: 100%; display: block;" alt="">
+                        </a>
+                        <div class="caption">
+                            @*25.30万 42.60万*@
+                            <a class="info_title">Jeep自由光 2014款 2.4 自动 豪华版</a>
+                            <p class="info_gray">2015年1月上牌 | 行驶1.7万公里</p>
+                            <p class="info_price">
+                                <span>25.30万</span>
+                                <s>42.60万</s>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 猜你喜欢  e-->
+@section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            function G(s) {
+                return document.getElementById(s);
+            }
+
+            function getStyle(obj, attr) {
+                if (obj.currentStyle) {
+                    return obj.currentStyle[attr];
+                } else {
+                    return getComputedStyle(obj, false)[attr];
+                }
+            }
+
+            function Animate(obj, json) {
+                if (obj.timer) {
+                    clearInterval(obj.timer);
+                }
+                obj.timer = setInterval(function () {
+                    for (var attr in json) {
+                        var iCur = parseInt(getStyle(obj, attr));
+                        iCur = iCur ? iCur : 0;
+                        var iSpeed = (json[attr] - iCur) / 5;
+                        iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                        obj.style[attr] = iCur + iSpeed + 'px';
+                        if (iCur == json[attr]) {
+                            clearInterval(obj.timer);
+                        }
+                    }
+                }, 30);
+            }
+
+            var oPic = G("picBox");
+            var oList = G("listBox");
+
+            var oPrev = G("prev");
+            var oNext = G("next");
+            var oPrevTop = G("prevTop");
+            var oNextTop = G("nextTop");
+
+            var oPicLi = oPic.getElementsByTagName("li");
+            var oListLi = oList.getElementsByTagName("li");
+            var len1 = oPicLi.length;
+            var len2 = oListLi.length;
+
+            var oPicUl = oPic.getElementsByTagName("ul")[0];
+            var oListUl = oList.getElementsByTagName("ul")[0];
+            var w1 = oPicLi[0].offsetWidth;
+            var w2 = oListLi[0].offsetWidth;
+
+            oPicUl.style.width = w1 * len1 + "px";
+            oListUl.style.width = w2 * len2 + "px";
+
+            var index = 0;
+
+            var num = 6;
+            var num2 = Math.ceil(num / 2);
+
+            function Change() {
+
+                Animate(oPicUl, { left: -index * w1 });
+                $("i[class='fc-org']").html(index + 1);
+
+                if (index < num2) {
+                    Animate(oListUl, { left: 0 });
+                } else if (index + num2 < len2) {
+                    Animate(oListUl, { left: -(index - num2 + 1) * w2 });
+                } else {
+                    Animate(oListUl, { left: -(len2 - num) * w2 });
+                }
+
+                for (var i = 0; i < len2; i++) {
+                    oListLi[i].className = "";
+                    if (i == index) {
+                        oListLi[i].className = "on";
+                    }
+                }
+            }
+
+            oNextTop.onclick = oNext.onclick = function () {
+
+                index++;
+                index = index == len2 ? 0 : index;
+                Change();
+            }
+
+            oPrev.onmouseover = oNext.onmouseover = oPrevTop.onmouseover = oNextTop.onmouseover = function () {
+                clearInterval(timer);
+            }
+            oPrev.onmouseout = oNext.onmouseout = oPrevTop.onmouseout = oNextTop.onmouseout = function () {
+                timer = setInterval(autoPlay, 4000);
+            }
+
+            oPrevTop.onclick = oPrev.onclick = function () {
+
+                index--;
+                index = index == -1 ? len2 - 1 : index;
+                Change();
+            }
+
+            var timer = null;
+            timer = setInterval(autoPlay, 4000);
+            function autoPlay() {
+                index++;
+                index = index == len2 ? 0 : index;
+                Change();
+            }
+
+
+
+            for (var i = 0; i < len2; i++) {
+                oListLi[i].index = i;
+                oListLi[i].onclick = function () {
+                    index = this.index;
+                    Change();
+                }
+            }
+
+        });
+
+    </script>
+}

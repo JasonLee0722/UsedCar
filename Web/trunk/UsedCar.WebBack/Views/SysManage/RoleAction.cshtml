@@ -1,0 +1,100 @@
+﻿@model IEnumerable<RoleAction>
+
+@{
+    ViewBag.Title = "角色权限";
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
+}
+
+@section Styles{
+    <link href="~/Content/multi-select/css/multi-select.css" rel="stylesheet" />
+    <style type="text/css">
+        .ms-container {
+            width: auto;
+        }
+
+            .ms-container .ms-list {
+                height: 260px;
+            }
+    </style>
+}
+
+@section Scripts{
+    <script src="~/Content/multi-select/js/jquery.multi-select.js"></script>
+    <script src="~/Scripts/UserJS/AjaxPost.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#ActionAllocation').multiSelect({
+                selectableOptgroup: true,
+                selectableHeader: "<div class='custom-header'>未分配权限</div>",
+                selectionHeader: "<div class='custom-header'>已分配权限</div>"
+            });
+            AjaxPost.init();
+        });
+        function select_all() {
+            $('#ActionAllocation').multiSelect('select_all');
+        }
+        function deselect_all() {
+            $('#ActionAllocation').multiSelect('deselect_all');
+        }
+        function save() {
+            var _Vals = '';
+            //获取所有已选择项，然后提交
+            $('#ActionAllocation option:selected').each(function (index, element) {
+                _Vals += ',' + $(element).val();
+            });
+            AjaxPost.PostSubmit('/SysManage/RoleActionEdit', { id: $('#roleid').val(), ActionIDs: _Vals });
+        }
+    </script>
+}
+<input type="hidden" id="roleid" value="@ViewContext.RouteData.Values["id"]" />
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="display:inline-block;">角色权限分配</h3>
+        <div class="pull-right" style="margin-top: -2px;">
+            <div class="btn btn-info" onclick="select_all();">选择全部</div>
+            <div class="btn btn-info" onclick="deselect_all();">取消全选</div>
+            <div class="btn btn-primary" onclick="save();"><i class="glyphicon glyphicon-floppy-save"></i> 保存</div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <select id='ActionAllocation' multiple='multiple'>
+            @{
+                var _PreMod = 0;
+                var SysActions = (List<SysAction>)ViewBag.SysActions;
+            }
+            @for (int i = 0; i < SysActions.Count; i++)
+            {
+                var item = SysActions[i];
+                var _NextItem = item;
+                if (i < SysActions.Count - 1)
+                {
+                    _NextItem = SysActions[i + 1];
+                }
+                else
+                {
+                    _NextItem = null;
+                }
+                
+                if (item.ModuleID != _PreMod)
+                {
+                    _PreMod = item.ModuleID;
+                    @:<optgroup label='@item.ModuleName'>
+                }
+                if (Model.Where(m => m.ActionID == item.ID).Count() > 0)
+                {
+                    <option value='@item.ID' selected>@item.Name</option>
+                }
+                else
+                {
+                    <option value='@item.ID'>@item.Name</option>
+                }
+
+                if (_NextItem == null || item.ModuleID != _NextItem.ModuleID)
+                {
+                    @:</optgroup>
+                }
+            }
+        </select>
+        <div class="alert alert-success feedinfo" role="alert"></div>
+    </div>
+</div>

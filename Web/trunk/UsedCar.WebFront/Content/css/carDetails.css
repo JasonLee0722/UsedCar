@@ -1,0 +1,1071 @@
+﻿div {
+    display: block;
+}
+
+laybox .yahei {
+    font-family: "Microsoft Yahei";
+}
+
+/*#region 头部信息 */
+
+.carInfoArea {
+    width: 100%;
+}
+
+.top_leftBox {
+    width: 600px;
+    height: 531px;
+    float: left;
+}
+
+.top_rightBox {
+    width: 540px;
+    height: 497px;
+    float: right;
+}
+
+/*#region 幻灯片 */
+
+.mod18 {
+    width: 600px;
+    position: relative;
+    margin: 0 auto;
+}
+
+    .mod18 .btn {
+        position: absolute;
+        cursor: pointer;
+        z-index: 99;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .mod18 .prev {
+        left: 10px;
+        background: url(../images/prevBtn.png) no-repeat;
+    }
+
+    .mod18 #prevTop, .mod18 #nextTop {
+        top: 180px;
+        width: 32px;
+        height: 48px;
+    }
+
+    .mod18 #prev, .mod18 #next {
+        top: 490px;
+        width: 10px;
+        height: 16px;
+    }
+
+    .mod18 #prevTop {
+        background: url(../images/prevBtnTop.png) 0 0 no-repeat;
+    }
+
+    .mod18 #nextTop {
+        background: url(../images/nextBtnTop.png) 0 0 no-repeat;
+    }
+
+    .mod18 .next {
+        right: 10px;
+        background: url(../images/nextBtn.png) no-repeat;
+    }
+
+    .mod18 li {
+        float: left;
+    }
+
+    .mod18 .cf li {
+        position: relative;
+        color: #fff;
+    }
+
+    .mod18 .cf a {
+        display: block;
+        width: 600px;
+        height: 394px;
+        position: absolute;
+        color: #fff;
+    }
+
+    .mod18 .picBox p {
+        position: absolute;
+        background: rgba(0,0,0,.5);
+        height: 30px;
+        width: 60px;
+        line-height: 30px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        color: #fff;
+        font-size: 14px;
+        z-index: 10;
+        text-align: center;
+    }
+
+.fc-org {
+    color: #f60;
+}
+
+.mod18 .picBox {
+    width: 100%;
+    height: 394px;
+    position: relative;
+    overflow: hidden;
+    background: #0D0D0D;
+}
+
+    .mod18 .picBox ul {
+        height: 394px;
+        position: absolute;
+        left: 0;
+    }
+
+    .mod18 .picBox li {
+        padding-left: 1px;
+        padding-right: 1px;
+        width: 600px;
+        height: 394px;
+    }
+
+    .mod18 .picBox img {
+        width: 100%;
+        height: 100%;
+    }
+
+.mod18 .listBox {
+    width: 600px;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+    .mod18 .listBox ul {
+        height: 100px;
+        position: absolute;
+    }
+
+    .mod18 .listBox li {
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+        position: relative;
+    }
+
+        .mod18 .listBox li i {
+            display: none;
+        }
+
+        .mod18 .listBox li a {
+            display: block;
+            width: 100px;
+            height: 77px;
+        }
+
+    .mod18 .listBox img {
+        width: 98px;
+        height: 98px;
+        border: 1px solid #fff;
+    }
+
+    .mod18 .listBox .on img {
+        border: 1px solid #ED8B1C;
+    }
+
+    .mod18 .listBox .on i {
+        display: block;
+    }
+
+/*#endregion */
+
+/*#region 右侧车辆详情 */
+
+.dt-titbox {
+    border-bottom: solid 1px #ddd;
+    _overflow: hidden;
+    _width: 540px;
+}
+
+.dt-titletype {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    line-height: 34px;
+    margin-bottom: 10px;
+}
+
+.car-error {
+    height: 26px;
+    padding-left: 15px;
+    line-height: 26px;
+}
+
+    .car-error a {
+        color: #c6c6c6;
+    }
+
+    .car-error i {
+        display: inline-block;
+        width: 13px;
+        height: 13px;
+        background: url(../images/de-icon.png) no-repeat 0 -20px;
+        float: left;
+        margin: 7px 4px 0 0;
+    }
+
+.title-info-r {
+    float: right;
+    height: 26px;
+}
+
+    .title-info-r li {
+        float: left;
+        display: inline;
+        margin-left: 10px;
+        padding: 1px;
+    }
+
+.bg-span {
+    display: inline-block;
+    padding: 4px 6px 7px 5px;
+}
+
+.title-info-r li a {
+    color: #c6c6c6;
+    display: inline-block;
+    height: 14px;
+    line-height: 14px;
+}
+
+.bg-span a {
+    white-space: nowrap;
+}
+
+.fav-new {
+    position: relative;
+}
+
+.ico-sc {
+    padding: 4px 6px 4px 5px;
+    position: relative;
+    z-index: 2;
+}
+
+/*.ico-collect {
+        background-position: -26px -144px;
+}*/
+.ico-collect, .ico-share {
+    float: left;
+    height: 14px;
+    margin: 2px 4px 0 0;
+    width: 14px;
+}
+
+.ico-collect {
+    background-image: url(../images/fav.png);
+    background-repeat: no-repeat;
+}
+.ico-share {
+    background-image: url(../images/bg_img_detail.png);
+    background-repeat: no-repeat;
+}
+
+.ico-share {
+    background-position: -83px -144px;
+}
+
+.basic-box {
+    padding: 10px 0px;
+    margin-bottom: 20px;
+    background: #fafafa;
+}
+
+.pricebox {
+    margin: 0;
+    line-height: 30px;
+    margin-bottom: 10px;
+    height: 38px;
+}
+
+.ico-txt {
+    display: inline-block;
+    width: 60px;
+    height: 18px;
+    color: #666;
+    line-height: 18px;
+    text-align: center;
+    margin: 0 10px;
+    float: left;
+}
+
+.ico-mt {
+    margin-top: 7px;
+}
+
+.pricestype {
+    font-weight: bold;
+    font-size: 30px;
+    color: #ff7e00;
+}
+
+.numtype {
+    vertical-align: -2px;
+    margin-right: 3px;
+    font-size: 36px;
+    font-family: Arial;
+}
+
+font {
+    color: rgb(255, 102, 0);
+}
+
+.car-fuwu {
+    height: 28px;
+    padding-bottom: 8px;
+    line-height: 20px;
+}
+
+    .car-fuwu a {
+        margin-left: 10px;
+    }
+
+    .car-fuwu span {
+        color: #666;
+        font-size: 14px;
+    }
+
+        .car-fuwu span em {
+            color: #f60;
+        }
+
+address, cite, code, dfn, em, var, i {
+    font-style: normal;
+}
+
+.assort li {
+    float: left;
+    width: 100px;
+    border-right: solid 1px #eee;
+    text-align: center;
+    color: #999;
+    line-height: 22px;
+}
+
+    .assort li.one {
+        border-left: solid 1px #eee;
+        width: 133px;
+    }
+
+    .assort li b {
+        display: block;
+        color: #666;
+        font-size: 16px;
+        font-family: "Microsoft Yahei";
+    }
+
+.tip-icon {
+    position: absolute;
+    top: -15px;
+    left: 60px;
+    display: inline-block;
+    width: 30px;
+    height: 19px;
+    background: url(../images/tip-icon.png) no-repeat 0 0;
+}
+
+.stipul-p {
+    margin: 20px 0 20px 0;
+}
+
+    .stipul-p a:hover, .stipul-p a:focus {
+        color: #fff;
+    }
+
+.stipul-btn {
+    width: 115px;
+    height: 48px;
+    line-height: 48px;
+    color: #fff;
+    font-family: "Microsoft Yahei";
+    background-color: #fd8000;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.stipul-btn-gray, .stipul-btn-gray:hover {
+    background: #ccc;
+    cursor: default;
+}
+
+.f18 {
+    font-size: 18px;
+}
+
+.fc-org {
+    color: #f60;
+}
+
+.teltype {
+    font-size: 24px;
+    color: #666;
+}
+
+.indem-box {
+    height: 158px;
+}
+
+.indem-tt {
+    height: 36px;
+    background-color: #f9f9f9;
+    line-height: 36px;
+    padding: 0 20px;
+}
+
+.indem-box h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.indem-ul {
+    overflow: hidden;
+    zoom: 1;
+    margin: 20px 0 0 0;
+}
+
+    .indem-ul li {
+        width: 178px;
+        text-align: center;
+        line-height: 20px;
+        float: left;
+    }
+
+.em-sta {
+    position: relative;
+    cursor: pointer;
+}
+
+.indem01, .indem02, .indem03 {
+    background: url(../images/detail-hc-new.png) no-repeat;
+    width: 36px;
+    height: 36px;
+    display: block;
+    margin: 0 auto;
+}
+
+.indem02 {
+    background-position: 0 -45px;
+}
+
+.indem03 {
+    background-position: 0 -89px;
+}
+
+.f-type01 {
+    color: #22ac38;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 10px 0 0 0;
+}
+
+/*#endregion */
+
+/*#endregion */
+
+/*#region 检测结果 */
+
+.detect-bd {
+    background-color: #f9f9f9;
+    font-size: 14px;
+}
+
+.clearfix:after {
+    content: "\0020";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+.detect-right {
+    width: 215px;
+    text-align: center;
+    line-height: 24px;
+    padding-bottom: 10px;
+}
+
+.fr {
+    float: right;
+}
+
+.divis-pic {
+    width: 100px;
+    height: 150px;
+    display: block;
+    margin: 25px auto 15px;
+    overflow: hidden;
+}
+
+.f-type02 {
+    color: #333;
+    font-weight: 700;
+}
+
+.detect-left {
+    width: 970px;
+    border-right: solid 1px #ddd;
+}
+
+.fl {
+    float: left;
+}
+
+.detect-tt {
+    padding: 0 20px;
+    line-height: 45px;
+    background: #f5f5f5;
+}
+
+.det-go {
+    color: #666;
+}
+
+.detect-info {
+    padding: 0 20px;
+    line-height: 24px;
+    font-size: 12px;
+    position: relative;
+}
+
+.detect-txt {
+    display: block;
+    margin: 10px 0;
+    height: 44px;
+    overflow: hidden;
+}
+
+.detect-xm {
+    border-top: 1px solid #e4e2e3;
+    padding: 15px 0;
+}
+
+.detect-xm-c {
+    margin-right: -60px;
+}
+
+dl {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+dd, dt {
+    line-height: 28px;
+}
+
+.detect-xm dl {
+    width: 230px;
+    float: left;
+    line-height: 28px;
+}
+
+.detect-xm dt {
+    font-size: 14px;
+    color: #333;
+    _padding-bottom: 7px;
+}
+
+.via-icon03 {
+    width: 16px;
+    height: 16px;
+    background: url(../images/detail-hc-new.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    background-position: -60px -132px;
+}
+/*#endregion */
+
+/*#region 详细信息 */
+
+.laybox {
+    margin: 30px auto;
+}
+
+/*#region top 菜单 */
+
+.cont-tips-outer {
+    width: 1190px;
+    margin: 0 auto;
+    height: 49px;
+}
+
+.cont-tips {
+    border: solid 1px #ddd;
+    height: 48px;
+    width: 1188px;
+    background-color: #fff;
+}
+
+.apt-btn {
+    display: block;
+    width: 124px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    background: #fd8000;
+}
+
+.cont-tips-outer a {
+    color: #fff;
+}
+
+.apt-btn:hover, .apt-btn:hover:visited {
+    background: #fd6000;
+    color: #fff;
+    text-decoration: none;
+}
+
+.check-tel {
+    margin: 10px 20px 0 0;
+}
+
+.f18 {
+    font-size: 18px;
+}
+
+.fc-org {
+    color: #f60;
+}
+
+.check-tel .teltype {
+    font-size: 18px;
+    color: #666;
+}
+
+.cont-tips-qh li {
+    float: left;
+    display: inline;
+    border-right: solid 1px #ddd;
+    font-family: "Microsoft Yahei";
+    font-size: 16px;
+}
+
+    .cont-tips-qh li a {
+        padding: 0 30px;
+        display: inline-block;
+        height: 46px;
+        line-height: 46px;
+        color: #666;
+    }
+
+        .cont-tips-qh li a.active, .cont-tips-qh li a:hover {
+            background-color: #22ac38;
+            text-decoration: none;
+            color: #fff;
+        }
+
+/*#endregion */
+
+/*#region 车源基本信息 */
+
+.modbox {
+    margin: 34px 0 0 0;
+}
+
+.publicTit {
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.deck {
+    height: 16px;
+    width: 4px;
+    font-size: 0;
+    background-color: #22ac38;
+    margin-right: 8px;
+    vertical-align: -2px;
+    display: inline-block;
+}
+
+.owner-infor li {
+    float: left;
+    margin: 0 60px 10px 0;
+    line-height: 24px;
+    font-size: 14px;
+    background-image: url(../images/icon-car-info.png);
+    background-repeat: no-repeat;
+    color: #666;
+    padding-left: 20px;
+}
+
+    .owner-infor li.owner {
+        background-position: left 5px;
+    }
+
+    .owner-infor li label {
+        color: #999;
+    }
+
+.jg-line {
+    color: #eee;
+    margin: 0 10px;
+}
+
+.owner-infor li.nianjian {
+    background-position: left -20px;
+}
+
+.owner-infor li.baoxian {
+    background-position: left -45px;
+}
+
+.owner-infor li.guohu {
+    background-position: left -70px;
+}
+
+.f-type03 em {
+    display: block;
+    width: 10px;
+    height: 11px;
+    position: absolute;
+    top: -11px;
+    left: 27px;
+    background: url(../images/icon-basic-info.png) no-repeat;
+}
+
+.f-type03 {
+    line-height: 24px;
+    word-wrap: break-word;
+    font-size: 14px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px 20px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 100;
+}
+/*#endregion */
+
+/*#region 车辆图片 */
+.publicTit {
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.dt-pictype {
+    margin: 14px -10px 20px 0;
+}
+
+    .dt-pictype img {
+        max-width: 590px;
+        max-height: 400px;
+        margin: 0 10px 10px 0;
+        vertical-align: top;
+    }
+/*#endregion */
+
+/*#region 检测报告 */
+
+.modbox1 {
+    margin: 0;
+    padding: 40px 50px;
+}
+
+.modbox1 {
+    margin: 0;
+    padding: 40px 50px;
+}
+
+.combox {
+    border: solid 1px #ddd;
+}
+
+.detecttitle {
+    border-bottom: solid 2px #ccc;
+    text-align: center;
+    padding: 0 0 4px 0;
+}
+
+    .detecttitle h3 {
+        color: #333;
+        line-height: 40px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .detecttitle span {
+        margin-right: 20px;
+        line-height: 24px;
+    }
+
+    .detecttitle a {
+        text-decoration: none;
+        color: #24d;
+    }
+
+.linetype {
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border-bottom: solid 1px #ddd;
+    margin: 1px 0 30px 0;
+}
+
+.headline-bd {
+    height: 46px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    line-height: 46px;
+}
+
+.headline {
+    background: url(../images/detail-hc-new.png) no-repeat right -172px;
+    color: #fff;
+    font-size: 16px;
+    float: left;
+    height: 46px;
+    line-height: 46px;
+    padding: 0 70px 0 20px;
+    margin-right: 10px;
+}
+
+.bitbox {
+    padding: 0 0 15px 0;
+}
+
+.f-type04 {
+    line-height: 24px;
+    margin: 0 0 5px 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+tr {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    display: table-row;
+    vertical-align: inherit;
+}
+
+.tableType th {
+    background-color: #f9f9f9;
+    font-size: 14px;
+}
+
+.tableType td, .tableType th {
+    border: solid 1px #ddd;
+    line-height: 42px;
+    text-align: center;
+}
+
+via-icon03 {
+    width: 16px;
+    height: 16px;
+    background-position: -60px -132px;
+    background: url(..images/detail-hc-new.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.caption-bd {
+    margin: 40px 0 50px 20px;
+}
+
+    .caption-bd span {
+        margin-right: 15px;
+    }
+
+.rd {
+    background: url(../images/detail-hc-new.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+}
+
+.gray-rd {
+    background-position: -122px -132px;
+}
+
+.gray-rd2 {
+    background-position: -105px -132px;
+}
+
+.blue-rd {
+    background-position: -148px -132px;
+}
+
+.red-rd {
+    background-position: -174px -132px;
+}
+
+.n-rd {
+    background-position: 0 -223px;
+}
+
+.appearance-con {
+    width: 487px;
+    height: 346px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.areabox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+}
+
+    .areabox li {
+        width: 487px;
+        height: 346px;
+        position: absolute;
+    }
+
+.door_rl-3, .door_rl-2, .door_rl-1 {
+    background-position: 0 -2076px;
+    background-position-x: 0px;
+    background-position-y: -2076px;
+}
+
+.hood-1, .fender_fl-1, .fender_fr-1, .roof-1, .door_fl-1, .door_fr-1, .door_rl-1, .door_rr-1, .trunk_lid-1, .fender_rl-1, .fender_rr-1 {
+    background: url(../images/gray-carblock.png) no-repeat;
+}
+
+.detectBox {
+    margin-bottom: 15px;
+}
+
+.pilotstep li {
+    width: 193px;
+    float: left;
+    display: inline;
+    margin-left: 30px;
+}
+
+    .pilotstep li.one {
+        margin-left: 0;
+    }
+
+    .pilotstep li .stepfont {
+        text-align: center;
+        margin: 15px 0 0 0;
+    }
+
+    .pilotstep li h3 {
+        font-size: 14px;
+        font-weight: bold;
+        border-bottom: solid 2px #ccc;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .pilotstep li .stepfont p {
+        margin: 6px 0;
+    }
+
+    .pilotstep li .stepfont span {
+        width: 60px;
+        display: inline-block;
+        text-align: left;
+    }
+
+.via-icon03 {
+    background-position: -60px -132px;
+    _vertical-align: top;
+}
+/*#endregion */
+
+/*#region 配置参数 */
+
+.con-param-s {
+    margin-right: -16px;
+    margin-bottom: -30px;
+}
+
+.c-param-in {
+    width: 386px;
+    float: left;
+    padding: 0 16px 30px 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+    text-align: center;
+    font-weight: bold;
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+.param-table td, .param-table th {
+    border: solid 1px #ddd;
+    height: 32px;
+    line-height: 16px;
+}
+
+.param-table th {
+    background-color: #f5f5f5;
+    font-size: 14px;
+}
+
+.param-table td.td1 {
+    padding: 0 0 0 25px;
+    width: 42%;
+}
+
+.param-table td.td2 {
+    padding: 0 0 0 25px;
+    width: 58%;
+}
+/*#endregion */
+
+/*#endregion */
+
+/*#region 猜你喜欢 */
+
+.guessbox {
+    margin: 20px auto;
+}
+
+.publicTit {
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0 0 10px 0;
+}
+
+
+/*#endregion */

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 瑞多致数字化服务营销管理平台</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        body { padding-bottom: 0px; padding-top: 0px; line-height: 2; /*color:white;*/ /*background-color: #3d3d3d;*/ /*background-image: url('/Content/images/tmbj60.png');*/ }
+
+        .container-fluid { /*padding-left: 0px;
+            padding-right: 0px;*/ }
+
+        .alert { margin-bottom: 0px; padding: 10px; margin-top: 10px; }
+        .modal-dialog { margin: 180px auto; }
+        .required { color: red; }
+    </style>
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <div class="container-fluid body-content">
+        @RenderBody()
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="WaitModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="width:100px;">
+            <div class="modal-content" style=" padding-left:5pt;height: 36px; line-height: 36px;">
+                <span>加载中...</span>
+                <img src="~/Content/images/loading-lg.gif" width="32" style=" float:right;" />
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- Waiting Modal -->
+    @*<div class="modal fade" id="WaitModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" style="width:25px;">
+                <div class="modal-content" style=" background-color:transparent;">
+                    <img src="~/Content/images/loading-lg.gif" width="24" />
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>*@<!-- /.modal -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript">
+        $(function () {
+            if (!Array.indexOf) {
+                Array.prototype.indexOf = function (obj) {
+                    for (var i = 0; i < this.length; i++) {
+                        if (this[i] == obj) {
+                            return i;
+                        }
+                    }
+                    return -1;
+                }
+            }
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

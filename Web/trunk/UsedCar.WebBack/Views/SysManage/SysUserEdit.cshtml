@@ -1,0 +1,333 @@
+﻿@model SysUser
+
+@{
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
+    ViewBag.Title = "编辑系统用户";
+    ViewBag.SubTitle = "系统用户的新增、修改";
+    ViewBag.ParentTitle = "系统管理";
+    string _UrlReferrer = null;
+    if (Request.UrlReferrer.PathAndQuery.IndexOf("SysUserIndex") != -1)
+    {
+        _UrlReferrer = Request.UrlReferrer.PathAndQuery;
+    }
+}
+
+@section Styles{
+    @Styles.Render("~/Content/ColorBox/css1")
+    <style type="text/css">
+        .has-feedback .form-control {
+            padding-right: 5px;
+            display: inline-block;
+        }
+        .form-horizontal .double-col .form-control-feedback{
+            right: 5px;
+        }
+        #Location .form-control-feedback {
+            right: -15px;
+        }
+    </style>
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/ColorBox")
+    @Scripts.Render("~/bundles/JQValidation")
+    <script src="~/Scripts/UserJS/FormValidation.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#enterprise').hide();
+            $("#Province").change(function () {
+                $.ajax({
+                    type: "get",
+                    url: "/Enterprise/GetCityList",
+                    data: "ProvinceName=" + $(this).val(),
+                    success: function (data) {
+                        var ops = "<option value=''>选择城市</option>";
+                        for (var i = 0; i < data.length; i++) {
+                            ops = ops + "<option value='" + data[i].Name + "'>" + data[i].Name + "</option>";
+                        }
+                        $("#City").html(ops);
+                    }
+                });
+            });
+            $('#EnterPriseNameForSelect').click(function () {
+                FormValidation.OpenWin('/Enterprise/EnterpriseList', 720, 521);
+            });
+            $('#relate').change(function () {
+                //alert($(this).prop('checked'));
+                relateChange();
+            });
+            $('#Type').change(function () {
+                //alert($(this).val());
+                typeChange();
+            });
+            typeChange();
+            var _rules = {
+                LoginName: {
+                    required: true,
+                    maxlength: 50,
+                    remote: {
+                        url: "/SysManage/validUnique",     //后台处理程序
+                        type: "get",               //数据发送方式
+                        dataType: "json"           //接受数据格式
+                    }
+                },
+                EnterPriseName: {
+                    required: true,
+                    maxlength: 50
+                },
+                EnterPriseNameForSelect: {
+                    required: true,
+                    maxlength: 50
+                },
+                Name: {
+                    required: true,
+                    maxlength: 50
+                },
+                State: {
+                    required: true
+                },
+                Type: {
+                    required: true
+                },
+                Province: {
+                    required: true
+                },
+                City: {
+                    required: true
+                }
+            };
+            _messages = {
+                LoginName: {
+                    remote: "此账号已被占用！"
+                },
+                Type: {
+                    required: "必须选择！"
+                },
+                State: {
+                    required: "必须选择！"
+                }
+            };
+            //FormValidation.init(_rules, _messages, { UrlReferrer: $('#urlReferrer').val() });
+            FormValidation.init(_rules, _messages);
+        });
+        //关联企业选中状态变更
+        function relateChange() {
+            if ($('#relate').prop('checked')) {
+                $('#enterpriseForSelect').show();
+                $('.enterpriseforInput').hide();
+            }
+            else {
+                $('#enterpriseForSelect').hide();
+                $('.enterpriseforInput').show();
+            }
+        }
+        //用户类型变更
+        function typeChange() {
+            if ($('#Type').val() != 2) {
+                $('#relatechk').hide();
+                $('#username').show();
+                $('#relate').prop('checked', false);
+                relateChange();
+                $('.enterpriseforInput').hide();
+            }
+            else {//企业用户
+                $('#relatechk').show();
+                $('.enterpriseforInput').show();
+                $('#username').hide();
+                $('#relate').prop('checked', true);
+                relateChange();
+            }
+        }
+        function SetChosenEnterprise(_Guid, _Name) {
+            $('#EnterPriseGuid').val(_Guid);
+            $('#EnterPriseNameForSelect').val(_Name);
+            $.colorbox.close();
+        }
+    </script>
+}
+
+<h3>@ViewBag.Title <small>@ViewBag.SubTitle</small></h3>
+<hr />
+<input type="hidden" id="urlReferrer" value="@_UrlReferrer" />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @*<h4>@ViewBag.Title</h4>*@
+        @*<hr />*@
+        @Html.ValidationSummary(true)
+        @*@Html.HiddenFor(model => model.ID)*@
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="LoginName">
+                登陆账号
+                <span class="required"> * </span>
+            </label>
+            <div class="col-xs-3" style="width: 350px;">
+                <input type="text" value="@Model.LoginName" name="LoginName" id="LoginName" @(string.IsNullOrWhiteSpace(Model.GUID) ? "" : "disabled='disabled'") placeholder="输入登陆账号名" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="Type">
+                用户类型
+                <span class="required"> * </span>
+            </label>
+            <div class="col-xs-3" style="width: 350px;">
+                @if (string.IsNullOrWhiteSpace(Model.GUID))
+                {
+                    @Html.DropDownListFor(m => m.Type, (IEnumerable<SelectListItem>)ViewBag.SysUserTypeSelectList, "选择一个用户类型...", new { @class = "form-control" })
+                }
+                else
+                {
+                    @Html.DropDownListFor(m => m.Type, (IEnumerable<SelectListItem>)ViewBag.SysUserTypeSelectList, "选择一个用户类型...", new { @class = "form-control", disabled = "disabled" })
+                }
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+        @if (Model.ID == 0)
+        {
+            <div id="relatechk" class="form-group has-feedback">
+                <div class="col-xs-offset-3 col-xs-3">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="relate" name="relate" @(string.IsNullOrWhiteSpace(Model.GUID) ? "" : "disabled='disabled'") value="1"> 关联已有资料
+                        </label>
+                    </div>
+                </div>
+            </div>
+        }
+        <!-- 点击以选择企业 -->
+        <div id="enterpriseForSelect" class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="EnterPriseName">
+                企业名称
+                <span class="required"> * </span>
+            </label>
+            <div class="col-xs-3" style="width: 350px;">
+                <input type="hidden" name="EnterPriseGuid" id="EnterPriseGuid" value="@Model.EnterpriseGuid">
+                <input type="text" value="@Model.EnterpriseName" name="EnterPriseNameForSelect" id="EnterPriseNameForSelect" @(string.IsNullOrWhiteSpace(Model.GUID) ? "" : "disabled='disabled'") placeholder="点击以选择企业" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+        <!-- 输入企业名称 -->
+        <div id="enterpriseforInput" class="form-group has-feedback enterpriseforInput">
+            <label class="control-label col-xs-3" for="EnterPriseName">
+                企业名称
+                <span class="required"> * </span>
+            </label>
+            <div class="col-xs-3" style="width: 350px;">
+                <input type="text" value="@Model.EnterpriseName" name="EnterPriseName" id="EnterPriseName" placeholder="输入企业名称" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+        <!--企业所在城市-->
+        <div id="Location" class="form-group has-feedback enterpriseforInput">
+            <label class="control-label col-xs-3">
+                省份城市
+                <span class="required"> * </span>
+            </label>
+            <div class="col-xs-3">
+                <select class="form-control" id="Province" name="Province">
+                    <option value="">请选省份</option>
+                    @foreach (var item in (List<Province>)ViewBag.Province)
+                    {
+                        <option value="@item.Name" @(Model.Province == item.Name ? "selected" : "")>@item.Name</option>
+                    }
+                </select>
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+            <div class="col-xs-3">
+                <select class="form-control" id="City" name="City">
+                    @if (string.IsNullOrWhiteSpace(Model.City))
+                    {
+                        <option value="">请选城市</option>
+                    }
+                    else
+                    {
+                        <option value="@Model.City" selected>@Model.City</option>
+                    }
+                </select>
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div id="username" class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="Name">
+                姓名
+                <span class="required"> * </span>
+            </label>
+            <div class="col-xs-3" style="width: 350px;">
+                <input type="text" value="@Model.Name" name="Name" id="Name" placeholder="输入姓名" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="Email">
+                E-Mail
+            </label>
+            <div class="col-xs-3" style="width: 350px;">
+                <input type="email" value="@Model.Email" name="Email" id="Email" placeholder="输入E-Mail" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="Phone">
+                手机
+            </label>
+            <div class="col-xs-3" style="width: 350px;">
+                <input type="tel" value="@Model.Phone" name="Phone" id="Phone" placeholder="输入手机号" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="State">
+                状态
+                <span class="required"> * </span>
+            </label>
+            <div class="col-xs-3" style="width: 350px;">
+                <label class="radio-inline">
+                    <input type="radio" name="State" id="StateRadio1" value="1" @(Model.State == 1 ? "checked='checked'" : "")> 启用
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="State" id="StateRadio2" value="0" @(Model.State == 0 ? "checked='checked'" : "")> 禁用
+                </label>
+                <label class="radio-inline radio-error">
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="State">
+                保养单类型
+                <span class="required"> * </span>
+            </label>
+            <div class="col-xs-3" style="width: 350px;">
+                <label class="radio-inline">
+                    <input type="radio" name="AuthType" id="AuthType1" value="0" @(Model.AuthType == 0 ? "checked='checked'" : "")> 简单版
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="AuthType" id="AuthType2" value="1" @(Model.AuthType != 0 ? "checked='checked'" : "")> 正常版
+                </label>
+                <label class="radio-inline radio-error">
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-3">
+                <input type="submit" value="保  存" class="btn btn-primary" style="width:100%;" />
+                @if (!string.IsNullOrWhiteSpace(_UrlReferrer))
+                {
+                    @*<a href="@_UrlReferrer" class="btn btn-success" style="margin-left:32px;">返  回</a>*@
+                }
+            </div>
+        </div>
+
+        <div class="alert alert-success feedinfo" role="alert"></div>
+    </div>
+}
+

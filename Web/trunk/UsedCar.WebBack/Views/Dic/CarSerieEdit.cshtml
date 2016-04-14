@@ -1,0 +1,177 @@
+﻿@model Models.CarSerie
+
+@{
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
+
+    ViewBag.Title = "汽车系列字典编辑";
+    ViewBag.SubTitle = "汽车系列字典添加、修改";
+
+    ViewBag.ParentTitle = "汽车系列管理";
+}
+
+@section Styles{
+    <style type="text/css">
+        .has-feedback .form-control {
+            padding-right: 5px;
+            display: inline-block;
+        }
+    </style>
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/JQValidation")
+    <script src="~/Scripts/UserJS/FormValidation.js"></script>
+    <script type="text/javascript">
+        //$(function () {
+        //    var _rules = {
+        //        Name: {
+        //            required: true,
+        //            maxlength: 20
+        //        },
+        //        Name: {
+        //            required: true,
+        //            maxlength: 50,
+        //            remote: {
+        //                url: "/Dic/validCarSerieUnique",     //后台处理程序
+        //                type: "get",               //数据发送方式
+        //                dataType: "json"           //接受数据格式
+        //            }
+        //        },
+        //        Sort: {
+        //            required: true
+        //        }
+        //    };
+        //    _messages = {
+        //        Name: {
+        //            remote: "此名称已被占用！"
+        //        }
+        //    };
+        //    FormValidation.init(_rules, _messages);
+        //});
+        jQuery(document).ready(function () {
+            $("#btnSubmit").click(function () {
+                CheckName();
+                if ($("#CName").val() == "1") {
+
+                    $("form.Edit_From").submit();
+                }
+
+            });
+            $("#Name").change(function () {
+                CheckName()
+            });
+            function CheckName() {
+                var Name = $("#Name");
+                var _Name = Name.val().trim();
+                if (_Name.length == 0) {
+                    Name.parent().attr('title', "不能为空");
+                    Name.parent().addClass('has-error');
+                    Name.next().removeClass('field-validation-valid');
+                } else {
+                    Name.parent().attr('title', "填写正确");
+                    Name.parent().removeClass('has-error');
+                    Name.next().addClass('field-validation-valid');
+                    $("#CName").val("1");
+                    if ($("#NameId").val() == 0) {
+                        //唯一性检查开始
+                        $.ajax({
+                            url: "/Dic/validCarSerieUnique?Name=" + _Name,
+                            type: "get",
+                            dataType: "json",
+                            success: function (data) {
+                                if (data == 1) {
+                                    Name.parent().attr('title', "填写正确");
+                                    Name.parent().removeClass('has-error');
+                                    Name.next().addClass('field-validation-valid');
+                                    $("#CName").val("1");
+                                } else if (data == 0) {
+                                    Name.parent().attr('title', "名称已经被占用");
+                                    Name.parent().addClass('has-error');
+                                    Name.next().removeClass('field-validation-valid');
+                                    $("#CName").val("0");
+                                }
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                //alert("保存失败");
+                            }
+                        });
+                    }
+                    //唯一性检查结束
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+        });
+    </script>
+}
+
+@*@using (Html.BeginForm())*@
+@using (Html.BeginForm("CarSerieEdit", "Dic", FormMethod.Post, new { enctype = "multipart/form-data", @class = "Edit_From" }))
+{
+    <div class="form-horizontal">
+        <h4>@ViewBag.Title</h4>
+        <hr />
+
+        <input type="hidden" id="CName" value="0" />
+        <input type="hidden" value="@Model.ID" id="NameId" />
+
+        @Html.HiddenFor(m=>m.BrandID)
+        @Html.HiddenFor(m => m.AddTime)
+        @Html.HiddenFor(m => m.State)
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="Name">
+                名称
+            </label>
+            <div class="col-xs-10">
+
+                @if (Model.ID == 0)
+                {
+                    <input type="text" value="@Model.Name" name="Name" id="Name" class="form-control single-line">
+                }
+                else
+                {
+                    @Html.HiddenFor(m => m.Name)
+
+                    <input type="text" value="@Model.Name" class="form-control single-line" disabled='disabled'>
+                }
+                <span class="required"> * </span>
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="Pic">
+                图片
+            </label>
+            <div class="col-xs-10">
+                @if (Model.Pic == null)
+                {
+                    @:无图片
+                }
+                else
+                {
+                    <img width="150" height="150" src="@Url.Action("GetImageCarSerie", "Dic", new { Model.ID })" />
+                }
+                <input type="file" name="CarImage" />
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+                <input id="btnSubmit" type="button" value="保存" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="alert alert-success feedinfo" role="alert">@TempData["Result"]</div>
+    </div>
+}

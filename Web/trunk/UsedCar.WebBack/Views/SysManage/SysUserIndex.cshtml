@@ -1,0 +1,182 @@
+﻿@model IPagedList<SysUser>
+
+@{
+    ViewBag.Title = "系统用户管理";
+    ViewBag.SubTitle = "系统用户的新增、修改、删除、禁用";
+    ViewBag.ParentTitle = "系统管理";
+    int iItem = ViewBag.NumberStart;
+}
+
+@section Styles{
+    @Styles.Render("~/Content/ColorBox/css1")
+    <style type="text/css">
+        th {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .btn-xs {
+            margin-top: 5px;
+        }
+    </style>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/ColorBox")
+    <script src="~/Scripts/UserJS/TableManage.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            TableManage.init();
+            //$("#testt").popover({ trigger: 'hover' });
+            //$('button').tooltip();
+        });
+        function ResetPWD(SysUser) {
+            TableManage.AjaxGetUpdate('确定要重置密码？', '/SysManage/ResetPWD/' + SysUser);
+        }
+        function UpdateUserState(SysUserID, State) {
+            TableManage.AjaxGetUpdate(
+                '确定要改变状态？', '/SysManage/UpdateUserState/' + SysUserID + '?State=' + State
+                , function () {
+                    location.reload();
+                }
+            );
+        }
+        //CreateMPUrl
+        function CreateMPUrl(SysUser) {
+            TableManage.OpenWin('/SysManage/CreateMPUrl/' + SysUser, 600, 200);
+        }
+        function CreateMPMenu(SysUser) {
+            //TableManage.OpenWin('/SysManage/CreateMPMenu/' + SysUser, 200, 100);
+            TableManage.AjaxGetUpdate(
+                '确定要改变当前微信菜单？菜单创建后24小时生效！（或通过取消关注再关注的方式可立即生效！）', '/SysManage/CreateMPMenu/' + SysUser
+            );
+        }
+        function Search() {
+            location.href = "/SysManage/SysUserIndex/" + $('#UserName').val();
+        }
+    </script>
+}
+<div class="alert alert-warning">
+    <div class="input-group ">
+        <div class="input-group-addon" style="cursor:pointer;">请输入名称查询</div>
+        <input id="UserName" type="text" class="form-control" placeholder="请输入名称查询" value="@(ViewContext.RouteData.Values["id"])">
+        <span class="input-group-btn pull-left">
+            <button type="button" class="btn btn-default" onclick="Search()">查询</button>
+        </span>
+    </div><!-- /input-group -->
+</div>
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th width="50">
+            序号
+        </th>
+        <th>
+            登录名
+        </th>
+        <th>
+            名称
+        </th>
+        <th>
+            @if (Html.HasAction("添加【用户管理】"))
+            {
+                @*<a href="/SysManage/SysUserEdit" class="btn btn-primary btn-xs pull-left">添加</a>*@
+                <a href="javascript:;" class="btn btn-success btn-xs pull-left" title="添加企业用户时，会同时绑定体验车辆及所有的预检项" onclick="TableManage.OpenWin('/SysManage/SysUserEdit', 800,600)">创建新用户</a>
+            }
+        </th>
+        <th>
+            地址
+        </th>
+        <th>
+            手机
+        </th>
+        <th width="90">
+            用户状态
+        </th>
+        @*<th width="80">
+            用户类型
+        </th>*@
+        @*<th>
+                添加用户
+            </th>
+            <th>
+                修改用户
+            </th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(iItem++)</td>
+            <td>
+                @item.LoginName
+            </td>
+            <td>
+                @item.Name
+            </td>
+
+            <td>
+                @if (Html.HasAction("修改【用户管理】"))
+                {
+                @*<a href="/SysManage/SysUserEdit/@item.ID" class="btn btn-primary btn-xs">编辑</a>*@
+                <a href="javascript:;" class="btn btn-success btn-xs"  onclick="TableManage.OpenWin('/SysManage/SysUserEdit/@item.Id', 650,550)">编辑</a>
+                }
+                @if (Html.HasAction("删除【用户管理】"))
+                {
+                <a href="javascript:;" class="btn btn-primary btn-xs" onclick="TableManage.Delete('/SysManage/SysUserDelete/@item.Id')">删除</a>
+                }
+                @if (Html.HasAction("分配角色【用户管理】"))
+                {
+                <a href="javascript:;" class="btn btn-primary btn-xs" onclick="TableManage.OpenWin('/SysManage/SysUserRole/@item.Id',450,395)">分配角色</a>
+                }
+                @if (Html.HasAction("密码重置【用户管理】"))
+                {
+                <a href="javascript:;" class="btn btn-primary btn-xs" onclick="ResetPWD('@item.LoginName');">密码重置</a>
+                }
+                
+                @*@if (item.Type == 2 && Html.HasAction("清空资料【用户管理】"))
+                {
+                <a href="javascript:;" class="btn btn-danger btn-xs" onclick="TableManage.AjaxGetUpdate('是否清空当前企业(@item.Name)所有业务数据？清空后不可恢复！','/SysManage/ClearData/@item.GUID')">清空资料</a>
+                }*@
+            </td>
+            <td>
+                @item.Address
+            </td>
+            <td>
+                @item.Phone
+            </td>
+            <td>
+                @if (item.State == 1)
+                {
+                    @:启用
+                    if (Html.HasAction("修改【用户管理】"))
+                    {
+                        @:(<a href="javascript:;" onclick="UpdateUserState(@item.Id,0);">停用</a>)
+                    }
+                }
+                else
+                {
+                    @:禁用
+                    if (Html.HasAction("修改【用户管理】"))
+                    {
+                        @:(<a href="javascript:;" onclick="UpdateUserState(@item.Id,1);" style="color:red;">开启</a>)
+                    }
+                }
+            </td>
+            @*<td>
+                @Html.DisplayForLinkContent(item.Type.ToString(), (IDictionary<string, string>)ViewBag.SysUserTypeDisplayList)
+            </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.AddUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EditUser)
+                </td>*@
+        </tr>
+    }
+</table>
+@Html.PagedListPager(Model, pageIndex => Url.Action("SysUserIndex", new { PageIndex = pageIndex }), new PagedListRenderOptions()
+{
+    DisplayPageCountAndCurrentLocation = true,
+    PageCountAndCurrentLocationFormat = Model.TotalItemCount == 0 ? "无记录" : "{0}/{1}",
+    UlElementClasses = new[] { "pagination pull-right" }
+})

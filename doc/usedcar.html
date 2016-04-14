@@ -1,0 +1,361 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>二手车网站功能设计</title>
+
+</head>
+<body>
+<h1>二手车网站功能设计</h1>
+
+<h3>前台功能</h3>
+
+<blockquote><table>
+<thead>
+<tr>
+<th>序号 </th>
+<th align="center"> 功能模块 </th>
+<th align="center">   </th>
+<th> 功能说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1   </td>
+<td align="center"> 首页 </td>
+<td align="center"> 定位 </td>
+<td> 首页定位到当前所在城市，可二次选择城市 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 搜索 </td>
+<td> 用户输入品牌、车型关键字查询车辆 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 我要卖车 </td>
+<td> 填入手机后发送给后台程序，用户等待客服联系（30分钟内）</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 我要买车 </td>
+<td> 按品牌、车型、价格分类 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 好车（推荐、故事）、拯救车小白 </td>
+<td> 文章信息 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 最新上架 </td>
+<td> 最新录入的车辆 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 降价急售 </td>
+<td> 后台设置售卖级别 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 准新车 </td>
+<td> 后台设置外观级别 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 练手车 </td>
+<td>   </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> SUV </td>
+<td> 车型 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 瓜子精选 </td>
+<td>    </td>
+</tr>
+<tr>
+<td>2   </td>
+<td align="center"> 我要买车 </td>
+<td align="center"> 搜索条件 </td>
+<td> 品牌、车系、价格、车龄、等等 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 排序条件 </td>
+<td> 价格、车龄、里程 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 车辆详信息 </td>
+<td> 预约看车、砍价、车辆图片、车辆配置、检测报告 </td>
+</tr>
+<tr>
+<td>3   </td>
+<td align="center"> 我要卖车 </td>
+<td align="center"> 快速估价、预约卖车 </td>
+<td> 预约卖车：选择车系，输入手机号，等待工作人员上面验车。快速估价：选择城市、车型，输入手机号、里程。系统估算价格。</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+<h3>后台功能</h3>
+
+<blockquote><table>
+<thead>
+<tr>
+<th>序号 </th>
+<th align="center"> 功能模块 </th>
+<th align="center">   </th>
+<th> 功能说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1   </td>
+<td align="center"> 登录 </td>
+<td align="center">      </td>
+<td> 管理人员（业务员）登录后台 </td>
+</tr>
+<tr>
+<td>2   </td>
+<td align="center"> 文章管理 </td>
+<td align="center">        </td>
+<td> 添加、删除、修改文章。如好车推荐、好车故事等栏目 </td>
+</tr>
+<tr>
+<td>3   </td>
+<td align="center"> 车主管理 </td>
+<td align="center">        </td>
+<td> 添加、删除、修改车主基本信息。如：手机号、住址、姓名 </td>
+</tr>
+<tr>
+<td>4   </td>
+<td align="center"> 车辆管理 </td>
+<td align="center"> 车辆信息 </td>
+<td> 车辆的基本信息，如配置参数、里程、价格。关联车主信息 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 检测报告 </td>
+<td> 发动机、车身等检测信息 </td>
+</tr>
+<tr>
+<td>5   </td>
+<td align="center"> 交易管理 </td>
+<td align="center"> 买车 </td>
+<td> 记录预约买车人员信息，前台发送手机号后记录到数据库，后台系统提示。</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 销售 </td>
+<td> 记录车辆销售日志（成功、未成功），关联买车信息。</td>
+</tr>
+<tr>
+<td>6   </td>
+<td align="center"> 系统管理 </td>
+<td align="center"> 用户管理 </td>
+<td> 系统用户信息添加、修改、删除。</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 权限管理 </td>
+<td> 用户管理添加、修改、删除。</td>
+</tr>
+<tr>
+<td>7   </td>
+<td align="center"> 字典管理 </td>
+<td align="center"> 栏目管理 </td>
+<td> 好车故事、好车推荐等 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 城市管理 </td>
+<td> 城市名称、缩写、代码。</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 车辆配置管理 </td>
+<td> 车辆外观、内饰的名称、缩写 </td>
+</tr>
+<tr>
+<td></td>
+<td align="center">   </td>
+<td align="center"> 车辆品牌管理 </td>
+<td> 车辆品牌、型号管理 </td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,387 @@
+﻿@using System.Web.Optimization;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @*<meta name="viewport" content="width=device-width, initial-scale=1">*@
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>@ViewBag.Title - 二手车直卖网</title>
+
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @Styles.Render("~/Content/css/layout")
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+
+    <div class="container full_width">
+        <!-- 头部  s -->
+        <div class="row">
+            <div class="col-xs-12" style="padding:0px;">
+                <div class="container form-inline header min_width">
+                    <div class="form-group left">
+                        <div class="logo">
+                            <div class="pull-left">
+                                <span class="logo_left">主流</span>
+                            </div>
+                            <div class="pull-right">
+                                <div class="logo_right_top">二手车直卖网</div>
+                                <div class="logo_right_bottom">zhuliucar.com</div>
+                            </div>
+                        </div>
+
+                        @*<img style="width:256px;height:65px;" />*@
+                    </div>
+                    <div class="form-group" style="width:150px;">
+                        <div class="c2city dropdown">
+
+                            <a href="javascript:;" class="choose-city ">
+                                <span>
+                                    
+                                </span>
+                                <i>&nbsp;</i><i>&nbsp;</i><i class="caret"></i>
+                            </a>
+                            <i class="maskline"></i>
+                            <div class="city-box">
+
+                                <div class="all-city">
+
+                                    <dl>
+                                        <dt>周边</dt>
+                                        <dd>
+                                            <a>杭州</a><a>无锡</a><a>绍兴</a><a>义乌</a><a>上海</a>
+                                        </dd>
+                                    </dl>
+
+                                    <dl>
+                                        <dt>热门</dt>
+                                        <dd>
+                                            <a>全国</a>
+                                            <a>北京</a>
+                                            <a>上海</a>
+                                            <a>广州</a>
+                                            <a>深圳</a>
+                                            <a>成都</a>
+                                            <a>重庆</a>
+                                            <a>杭州</a>
+                                            <a>苏州</a>
+                                            <a>石家庄</a>
+                                            <a>武汉</a>
+                                        </dd>
+                                    </dl>
+                                    <div class="city-line"></div>
+                                    <dl>
+                                        <dt>A</dt>
+                                        <dd>
+                                            <a>鞍山</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>B</dt>
+                                        <dd>
+                                            <a>北京</a>
+                                            <a>保定</a>
+                                            <a>包头</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>C</dt>
+                                        <dd>
+                                            <a>重庆</a>
+                                            <a>成都</a>
+                                            <a>长春</a>
+                                            <a>长沙</a>
+                                            <a>常州</a>
+                                            <a>沧州</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>D</dt>
+                                        <dd>
+                                            <a>大连</a>
+                                            <a>达州</a>
+                                            <a>东莞</a>
+                                            <a>大庆</a>
+                                            <a>大同</a>
+                                            <a>德州</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>F</dt>
+                                        <dd>
+                                            <a>抚顺</a>
+                                            <a>福州</a>
+                                            <a>佛山</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>G</dt>
+                                        <dd>
+                                            <a>广州</a>
+                                            <a>贵阳</a>
+                                            <a>赣州</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>H</dt>
+                                        <dd>
+                                            <a>杭州</a>
+                                            <a>合肥</a>
+                                            <a>哈尔滨</a>
+                                            <a>呼和浩特</a>
+                                            <a>惠州</a>
+                                            <a>邯郸</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>J</dt>
+                                        <dd>
+                                            <a>济南</a>
+                                            <a>济宁</a>
+                                            <a>吉林</a>
+                                            <a>嘉兴</a>
+                                            <a>佳木斯</a>
+                                            <a>九江</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>K</dt>
+                                        <dd>
+                                            <a>昆明</a>
+                                            <a>开封</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>L</dt>
+                                        <dd>
+                                            <a>洛阳</a>
+                                            <a>临沂</a>
+                                            <a>柳州</a>
+                                            <a>六安</a>
+                                            <a>辽阳</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>M</dt>
+                                        <dd>
+                                            <a>绵阳</a>
+                                            <a>马鞍山</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>N</dt>
+                                        <dd>
+                                            <a>南京</a>
+                                            <a>南昌</a>
+                                            <a>南宁</a>
+                                            <a>南通</a>
+                                            <a>南阳</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Q</dt>
+                                        <dd>
+                                            <a>青岛</a>
+                                            <a>泉州</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>S</dt>
+                                        <dd>
+                                            <a>上海</a>
+                                            <a>苏州</a>
+                                            <a>沈阳</a>
+                                            <a>石家庄</a>
+                                            <a>深圳</a>
+                                            <a>绍兴</a>
+                                            <a>宿迁</a>
+                                            <a>松原</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>T</dt>
+                                        <dd>
+                                            <a>天津</a>
+                                            <a>唐山</a>
+                                            <a>太原</a>
+                                            <a>铁岭</a>
+                                            <a>泰州</a>
+                                            <a>泰安</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>W</dt>
+                                        <dd>
+                                            <a>武汉</a>
+                                            <a>潍坊</a>
+                                            <a>无锡</a>
+                                            <a>威海</a>
+                                            <a>芜湖</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>X</dt>
+                                        <dd>
+                                            <a>西安</a>
+                                            <a>厦门</a>
+                                            <a>徐州</a>
+                                            <a>襄阳</a>
+                                            <a>新乡</a>
+                                            <a>湘潭</a>
+                                            <a>许昌</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Y</dt>
+                                        <dd>
+                                            <a>烟台</a>
+                                            <a>扬州</a>
+                                            <a>宜昌</a>
+                                            <a>义乌</a>
+                                            <a>运城</a>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Z</dt>
+                                        <dd>
+                                            <a>郑州</a>
+                                            <a>中山</a>
+                                            <a>漳州</a>
+                                            <a>株洲</a>
+                                            <a>镇江</a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <p class="more-city">更多城市正在加紧筹备，敬请期待。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group pull-right">
+                        <div class="form-inline " style="height: 50px;margin-top:15px;">
+                            <div class="form-group ">
+                                <input id="txt_seach" class="form-control" placeholder="二手车搜索条件" />
+                            </div>
+                            <div class="form-group">
+                                <a id="btn_sech" class=" " style="padding:7px;">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 头部  e -->
+        <!-- 导航  s -->
+        <div class="row">
+            <div class="col-xs-12" style="padding:0px;">
+                <nav class="navbar navbar-car" role="navigation">
+                    <div id="navbar">
+                        <div class="container min_width">
+                            <ul class="nav navbar-nav">
+                                <li><a href="~/Home/Index">首页</a></li>
+                                <li><a href="~/Buy/Index">我要买车</a></li>
+                                <li><a href="~/Sell/Index">我要卖车</a></li>
+                                <li><a href="~/Intro/Index">服务保障</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- 导航  e -->
+    </div>
+    <div class="container min_width" style="margin-top:20px;min-height:600px;">
+        @RenderBody()
+    </div>
+    <!-- 底部  s -->
+    <footer style="height:160px;background-color:#808080"></footer>
+    <!-- 底部  e -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Content/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.cookie.js"></script>
+    <script>
+        $(function () {
+            // 导航相关 s
+            var nav = "@ViewBag.Nav";
+            switch (nav) {
+                case "Home":
+                    $("#navbar ul li:eq(0)").addClass("active");
+                    break;
+                case "Buy":
+                    $("#navbar ul li:eq(1)").addClass("active");
+                    break;
+                case "Sell":
+                    $("#navbar ul li:eq(2)").addClass("active");
+                    break;
+                case "Intro":
+                    $("#navbar ul li:eq(3)").addClass("active");
+                    break;
+                default:
+                    break;
+            }
+            // 导航相关 e
+
+            // 选择城市 s
+            var cookie_cityName = "usedcar_cityName";
+            //$.cookie(cookie_cityName, null, { path: '/' });
+            
+            if ($.cookie(cookie_cityName) != null) {
+                $(".c2city a span").text($.cookie(cookie_cityName));
+            } else {
+                getCityNameBySina();
+            }
+
+            $(".c2city").mouseover(function () {
+                showMoreCity();
+            });
+
+            $(".c2city").mouseout(function () {
+                hideMoreCity();
+            });
+
+            $(".all-city dd a").click(function () {
+                hideMoreCity();
+                $.cookie(cookie_cityName, $(this).html(), { expires: 30, path: '/' });
+                $(".c2city a span").text($(this).html());
+            });
+
+            function showMoreCity() {
+                $(".c2city").removeClass("dropdown");
+                $(".c2city").addClass("dropup");
+                $(".maskline").css("display", "block");
+                $(".city-box").css("display", "block");
+            }
+
+            function hideMoreCity() {
+                $(".c2city").addClass("dropdown");
+                $(".c2city").removeClass("dropup");
+                $(".maskline").css("display", "");
+                $(".city-box").css("display", "none");
+            }
+            // 选择城市 e
+        });
+
+        //通过新浪API获取用户所在城市
+        function getCityNameBySina() {
+            $.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js', function () {
+                //var remote_ip_info = {"ret":1,"start":-1,"end":-1,"country":"\u4e2d\u56fd","province":"\u6c5f\u82cf","city":"\u82cf\u5dde","district":"","isp":"","type":"","desc":""};
+                $(".c2city a span").text(remote_ip_info.city);
+            });
+        }
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

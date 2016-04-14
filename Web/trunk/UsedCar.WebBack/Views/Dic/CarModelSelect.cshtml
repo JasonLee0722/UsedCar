@@ -1,0 +1,122 @@
+﻿@model Models.Car
+@{
+    ViewBag.Title = "车辆选择列表";
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
+    //int iItem = ViewBag.NumberStart;
+}
+<div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <strong>@ViewBag.Title</strong>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3" for="CarBrand">汽车品牌</label>
+        <div class="col-md-6  has-feedback">
+
+            <select class="form-control" id="CarBrand" name="CarBrand" style="padding-right:0;">
+                <option value=''>选择汽车品牌...</option>
+                @foreach (var item in (IList<CarBrand>)ViewBag.CarBrands)
+                {
+                    <option value="@item.ID" @(ViewBag.BrandID == item.ID ? "selected" : "")>@item.Brand</option>
+                }
+            </select>
+            <span class="glyphicon glyphicon-remove  form-control-feedback field-validation-valid"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3" for="CarSerie">汽车系列</label>
+        <div class="col-md-6  has-feedback">
+
+            <select class="form-control" id="CarSerie" name="CarSerie" style="padding-right:0;">
+                <option value=''>选择汽车系列...</option>
+                @foreach (var item in (IList<CarSerie>)ViewBag.CarSeries)
+                {
+                    <option value="@item.ID" @(ViewBag.SerieID == item.ID ? "selected" : "")>@item.Name</option>
+                }
+            </select>
+            <span class="glyphicon glyphicon-remove  form-control-feedback field-validation-valid"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3" for="CarModel">汽车型号</label>
+        <div class="col-md-6  has-feedback">
+            <select class="form-control" id="CarModel" name="CarModel" style="padding-right:0;">
+                <option value=''>选择汽车型号...</option>
+                @foreach (var item in (IList<CarModel>)ViewBag.CarModels)
+                {
+                    <option value="@item.ID" @(ViewBag.ModelID == item.ID ? "selected" : "")>@item.Name</option>
+                }
+            </select>
+            <span class="glyphicon glyphicon-remove  form-control-feedback field-validation-valid"></span>
+        </div>
+    </div>
+    <div style="width:100%;">
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-7">
+                <input type="submit" value="确认" class="btn btn-default form-control" id="btn_add" />
+                @*<input type="button" value="返回" class="btn btn-default" id="btn_cancel" />*@
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+
+        jQuery(document).ready(function () {
+            $("#btn_add").click(function () {
+                var _BrandID = $("#CarBrand").val();
+                var _SerieID = $("#CarSerie").val();
+                var _ModelID = $("#CarModel").val();
+
+                var _ModelName = "";
+                if (_BrandID != "") {
+                    _ModelName = $("#CarBrand").find("option:selected").text();
+                }
+                if (_SerieID != "") {
+                    if (_ModelName != "") {
+                        _ModelName += "/";
+                    }
+                    _ModelName += $("#CarSerie").find("option:selected").text();
+                }
+                if (_ModelID != "") {
+                    if (_ModelName != "") {
+                        _ModelName += "/";
+                    }
+                    _ModelName += $("#CarModel").find("option:selected").text();
+                }
+                parent.SetCar(_ModelName, _BrandID, _SerieID, _ModelID);
+            });
+            $("#CarBrand").change(function () {
+                $.ajax({
+                    type: "get",
+                    url: "/Dic/GetCarSerieSelect",
+                    data: "CarBrandID=" + $(this).val(),
+                    success: function (data) {
+
+                        var ops = "<option value=''>选择汽车系列...</option>";
+                        for (var i = 0; i < data.length; i++) {
+                            ops = ops + "<option value='" + data[i].ID + "'>" + data[i].Name + "</option>";
+                        }
+                        $("#CarSerie").html(ops);
+                        var opss = "<option value=''>选择汽车型号...</option>";
+                        $("#CarModel").html(opss);
+                    }
+                });
+            });
+            $("#CarSerie").change(function () {
+                $.ajax({
+                    type: "get",
+                    url: "/Dic/GetCarModelSelect",
+                    data: "CarSerieID=" + $(this).val(),
+                    success: function (data) {
+                        var ops = "<option value=''>选择汽车型号...</option>";
+                        for (var i = 0; i < data.length; i++) {
+                            ops = ops + "<option value='" + data[i].ID + "'>" + data[i].Name + "</option>";
+                        }
+                        $("#CarModel").html(ops);
+                    }
+                });
+            });
+        });
+    </script>
+}

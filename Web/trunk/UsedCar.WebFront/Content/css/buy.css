@@ -1,0 +1,352 @@
+﻿/*#region 筛选 */
+
+dl {
+    display: block;
+}
+
+.brand-all em {
+    color: #666;
+    float: left;
+    padding: 0 6px;
+    white-space: nowrap;
+    cursor: pointer;
+    font-style: normal;
+}
+
+    .brand-all em i, .sequen li a i {
+        background-image: url('../images/hc-icons-new.png');
+        background-repeat: no-repeat;
+    }
+
+    .brand-all em i {
+        width: 11px;
+        height: 6px;
+        display: inline-block;
+        margin-left: 3px;
+        vertical-align: 1px;
+        _vertical-align: 4px;
+        overflow: hidden;
+    }
+
+.comfilter-bd {
+    margin: 0 auto 20px auto;
+}
+
+.filterBox {
+    padding: 20px 20px 0 20px;
+    background: #f9f9f9;
+    border: solid 1px #f5f5f5;
+    font-size: 12px;
+    font-family: 'Microsoft yahei';
+}
+
+.fliter-bd {
+    line-height: 24px;
+    color: #666;
+    padding-bottom: 10px;
+}
+
+    .fliter-bd dt {
+        line-height: 24px;
+        float: left;
+        font-weight: bold;
+        width: 50px;
+    }
+
+    .fliter-bd dd {
+        line-height: 24px;
+        display: block;
+        width: 1095px;
+        float: left;
+    }
+
+        .fliter-bd dd a {
+            color: #666;
+            padding: 0 6px;
+            white-space: nowrap;
+            float: left;
+            margin: 0 8px 5px 0;
+        }
+
+            .fliter-bd dd a.on, .fliter-bd dd a.on:hover {
+                background: #22ac38;
+                color: #fff;
+                text-decoration: none;
+            }
+
+.input-box {
+    float: left;
+    padding-left: 5px;
+}
+
+    .input-box label {
+        color: #707070;
+        float: left;
+        margin-right: 5px;
+        cursor: default;
+        margin-bottom: 0px;
+    }
+
+    .input-box input {
+        border: 1px solid #ddd;
+        height: 18px;
+        line-height: 18px;
+        vertical-align: middle;
+        padding: 0 8px;
+        text-align: center;
+        width: 32px;
+        box-sizing: content-box;
+    }
+
+.moreitem {
+    color: #666;
+    line-height: 24px;
+    padding-bottom: 10px;
+}
+
+    .moreitem .active {
+        position: relative;
+        z-index: 42;
+    }
+
+    .moreitem dt {
+        float: left;
+        font-weight: bold;
+        width: 50px;
+    }
+
+    .moreitem dd {
+        float: left;
+        margin-right: 5px;
+    }
+
+.moreitem-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    display: inline-block;
+    float: left;
+    line-height: 20px;
+    line-height: 22px\9;
+    padding: 0 10px 2px 10px;
+    padding: 0 10px\9;
+}
+
+.active .moreitem-btn {
+    border: solid 1px #bbb;
+    z-index: 44;
+    position: relative;
+    border-bottom: 0;
+    height: 24px;
+}
+
+.moreitem-btn a {
+    background: url('../images/icon-a-s.png') no-repeat right -51px;
+    display: inline-block;
+    padding-right: 20px;
+    vertical-align: top;
+    color: #707070;
+    text-decoration: none;
+}
+
+    .moreitem-btn a:hover, .active .moreitem-btn a {
+        color: #707070;
+        background-position: right -75px;
+        vertical-align: top;
+        text-decoration: none;
+    }
+
+    .moreitem-btn a.active, .moreitem-btn a.active:hover {
+        color: #22ac38;
+        text-decoration: none;
+    }
+
+.moreitem-box {
+    border: 1px solid #bbb;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    z-index: 43;
+    display: none;
+    top: 23px;
+}
+
+.active .moreitem-box {
+    display: block;
+}
+
+.moreitem-box a {
+    color: #707070;
+}
+
+.m-i-w1 {
+    width: 114px;
+}
+
+.moreitem-opts a {
+    display: block;
+    line-height: 28px;
+    font-size: 12px;
+    padding: 0;
+    text-indent: 10px;
+    height: 28px;
+    border-top: solid 1px #f5f5f5;
+}
+
+    .moreitem-opts a.one, .colorsort a.one {
+        border-top: 0;
+    }
+
+    .moreitem-opts a:hover, .moreitem-opts a.d-on {
+        color: #e30;
+        background-color: #f5f5f5;
+        text-decoration: none;
+    }
+
+.moreitem-color {
+    width: 225px;
+}
+
+    .moreitem-color a {
+        box-sizing: content-box;
+        float: left;
+        width: 74px;
+        border-right: 1px solid #f5f5f5;
+    }
+
+    .moreitem-color i {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+    }
+
+.c-lump01, .c-lump02, .c-lump03, .c-lump04, .c-lump05, .c-lump06, .c-lump07, .c-lump08, .c-lump09, .c-lump10, .c-lump11, .c-lump12, .c-lump13, .c-lump14, .c-lump15 {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    font-size: 0;
+    margin: 0 5px 0 0;
+    vertical-align: -2px;
+}
+
+.c-lump02 {
+    background: #22ac38;
+}
+
+.c-lump03 {
+    background: #333;
+}
+
+c-lump04 {
+    background: #fff;
+    border: solid 1px #e5e5e5;
+    width: 11px;
+    height: 11px;
+}
+
+.c-lump05 {
+    background: #039;
+}
+
+.c-lump06 {
+    background: #82371e;
+}
+
+.c-lump07 {
+    background: #7d02bc;
+}
+
+.c-lump08 {
+    background: #b49766;
+}
+
+.c-lump09 {
+    background: #c00;
+}
+
+.c-lump10 {
+    background: #c9c7c5;
+}
+
+.c-lump12, .c-lump14 {
+    background: url(../images/colorlump.png) no-repeat;
+}
+
+.c-lump13 {
+    background: #fdd601;
+}
+
+.c-lump11 {
+    background: #fd8301;
+}
+
+.c-lump14 {
+    background-position: -17px 0;
+}
+
+.c-lump15 {
+    background: #666;
+}
+
+
+/*#endregion */
+
+
+/*#region 排序 */
+
+.fr {
+    float: right;
+}
+
+.seqtype {
+    color: #999;
+    line-height: 34px;
+}
+seqtype b {
+    margin: 0 5px;
+}
+.sequen li {
+    float: left;
+    height: 32px;
+}
+.sequen a {
+    border: solid 1px #ddd;
+    color: #666;
+    display: inline-block;
+    position: relative;
+    margin-left: -1px;
+    padding: 6px 20px;
+    _line-height: 18px;
+    _height: 18px;
+    _padding: 10px 20px 2px 20px;
+}
+.sequen li.first a {
+    color: #22ac38;
+    font-weight: bold;
+}
+.sequen a:hover {
+    background: #f5f5f5;
+    text-decoration: none;
+    color: #22ac38;
+    font-weight: bold;
+}
+.brand-all em i, .sequen li a i {
+    background-image: url('../images/hc-icons-new.png');
+    background-repeat: no-repeat;
+}
+.sequen li a i {
+    width: 7px;
+    height: 11px;
+    line-height: 11px;
+    display: inline-block;
+    margin-left: 5px;
+    overflow: hidden;
+    vertical-align: middle;
+    _vertical-align: 3px;
+}
+.sequen li a i.up {
+    background-position: 0 -16px;
+}
+.sequen li.first a i.down, .sequen li a:hover i.down {
+    background-position: 0 -42px;
+}
+/*#endregion */

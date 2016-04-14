@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SysAction>
+@{
+    ViewBag.Title = "系统权限动作管理";
+    ViewBag.SubTitle = "系统权限动作的添加、修改、删除";
+    ViewBag.ParentTitle = "系统管理";
+    int _MID = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
+    int _MPID = Convert.ToInt32(Request.QueryString["MPID"]);
+    int iItem = 1; //ViewBag.NumberStart;
+    string _UrlReferrer = null;
+    string _UrlRefPathAndQuery = Request.UrlReferrer == null ? "/SysManage/SysModuleIndex" : Request.UrlReferrer.PathAndQuery;
+    if (_UrlRefPathAndQuery.IndexOf("/SysManage/SysModuleIndex") != -1)
+    {
+        _UrlReferrer = "/SysManage/SysModuleIndex/" + _MPID;
+    }
+    //----------定义导航菜单----------
+    var NavList = new Dictionary<string, string>();
+    NavList.Add("系统管理", "#");
+    NavList.Add("系统模块管理", "/SysManage/SysModuleIndex/" + _MPID);
+    ViewBag.NavList = NavList;
+    //----------定义导航菜单----------
+}
+
+@section Styles{
+    @Styles.Render("~/Content/ColorBox/css1")
+    <style type="text/css">
+    </style>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/ColorBox")
+    <script src="~/Scripts/UserJS/TableManage.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            TableManage.init();
+        });
+    </script>
+}
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th width="50">
+            序号
+        </th>
+        <th>
+            权限名称
+        </th>
+        <th>
+            父模块
+        </th>
+        <th>
+            排序
+        </th>
+        <th>
+            添加时间
+        </th>
+        <th>
+            <a href="#" onclick="TableManage.Edit('/SysManage/SysActionEdit?MID=@_MID', 400, 350)">添加</a>
+            @if (!string.IsNullOrWhiteSpace(_UrlReferrer))
+            {
+                @: |
+                <a href="@_UrlReferrer">返回</a>
+            }
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(iItem++)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayForLinkContent(item.ModuleID.ToString(), (IDictionary<string, string>)ViewBag.SysModuleDisplayList)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sort)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddTime)
+            </td>
+            <td>
+                <a href="#" onclick="TableManage.Edit('/SysManage/SysActionEdit/@item.ID',400,350)">编辑</a> |
+                <a href="#" onclick="TableManage.Delete('/SysManage/SysActionDelete/@item.ID')">删除</a>
+            </td>
+        </tr>
+    }
+
+</table>

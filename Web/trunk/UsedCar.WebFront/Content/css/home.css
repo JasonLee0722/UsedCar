@@ -1,0 +1,193 @@
+﻿/*#region 功能区 */
+
+.home_top {
+    height: 351px;
+    width: 100%;
+    float: left;
+}
+
+.sell_area {
+    width: 255px;
+    height: 350px;
+    background-color: #f7f7f7;
+    border: 1px solid#A9A9A9;
+    float: left;
+}
+
+.slide_area {
+    width: 640px;
+    height: 350px;
+    margin: 0px 10px;
+    float: left;
+}
+
+.dt {
+    font-size: 14px;
+    color: #000;
+    line-height: 32px;
+}
+
+.dd a {
+    margin-right: 7px;
+    line-height: 25px;
+}
+
+/*#region 品牌 */
+
+.sx_brand {
+    height: 100px;
+    padding: 0px 18px;
+    /*background-color: #ffd800;*/
+}
+
+.sx_brand_padding {
+    padding: 10px 0px 8px 0px;
+    border-bottom: 1px solid #A9A9A9;
+}
+
+.sx_brand_padding_active {
+    padding: 10px 0px 8px 0px;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.sx_brand_active {
+    margin-top: -1px;
+    margin-left: -1px;
+    height: 101px;
+    border: 1px solid #ED8B1C;
+    border-right: 0px;
+}
+
+.brand_more {
+    display: none;
+    position: absolute;
+    left: 254px;
+    top: -0px;
+    background-color: #fff;
+    width: 710px;
+    padding: 15px 25px;
+    border: 1px solid #ED8B1C;
+    z-index: 4;
+    float: left;
+}
+
+.leftline {
+    position: absolute;
+    left: -2px;
+    top: 0px;
+    width: 2px;
+    background: #fff;
+    height: 99px;
+}
+
+.zm {
+    font-size: 14px;
+    font-weight: bold;
+    width: 40px;
+    color: #22ac38;
+}
+
+.tb_brand_column1 {
+    margin-right: 30px;
+}
+
+.tb_brand_column1, .tb_brand_column2 {
+    width: 310px;
+    float: left;
+}
+
+.brand_more p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.brand_more table td {
+    vertical-align: top;
+    padding: 5px 0;
+    line-height: 22px;
+}
+
+.brand_more table a {
+    margin-right: 13px;
+    /*color: #666;
+        text-decoration: none;*/
+}
+
+/*#endregion */
+
+.sx_price {
+    height: 100px;
+    padding: 10px 18px 8px 18px;
+    /*background-color: #ffffff;*/
+    border-bottom: 1px solid #A9A9A9;
+}
+
+
+.sx_model {
+    height: 75px;
+    padding: 10px 18px 8px 18px;
+    /*background-color: #0094ff;*/
+    border-bottom: 1px solid #A9A9A9;
+}
+
+.sx_age {
+    height: 75px;
+    padding: 10px 18px 8px 18px;
+    /*background-color: #ff6a00;*/
+}
+
+/*#region 图片轮播 */
+.tab-content .thumbnail {
+    margin-bottom: 12px;
+}
+
+#bannerCarousel img {
+    width: 100%;
+    height: 350px;
+}
+
+.carousel-indicators li {
+    width: 8px;
+    height: 8px;
+}
+
+.carousel-indicators .active {
+    width: 10px;
+    height: 10px;
+}
+
+/*#endregion */
+
+/*#region 快速评估 */
+.ass_area {
+    width: 275px;
+    height: 350px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #A9A9A9;
+    float: left;
+}
+
+    .ass_area select, .ass_area input {
+        margin-bottom: 20px;
+    }
+
+.ass_title h3 {
+    color: #ED8B1C;
+    font-size: 16px;
+    font-family: "microsoft yahei";
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+#btn_ass {
+    width: 235px;
+}
+/*#endregion */
+
+.panel .thumbnail {
+    margin-bottom: 0px;
+}
+
+/*#endregion */

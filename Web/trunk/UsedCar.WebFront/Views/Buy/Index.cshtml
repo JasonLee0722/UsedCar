@@ -1,0 +1,602 @@
+﻿@{
+    ViewBag.Title = "我要买";
+    ViewBag.Nav = "Buy";
+}
+@section Styles{
+    <link href="~/Content/css/buy.css" rel="stylesheet" />
+}
+
+<div style="min-height:600px;">
+    <!-- 筛选  s -->
+    <div class="comfilter-bd">
+        <div class="filterBox">
+            <dl class="fliter-bd clearfix">
+                <dt>品牌：</dt>
+                <dd data-widget="app/ms_v2/vehicle/c2c/list_page.js#clickBrandWidget">
+                    <a class="on">不限</a>
+                    <a class="">大众</a>
+                    <a class="">福特</a>
+                    <a class="">别克</a>
+                    <a class="">雪佛兰</a>
+                    <a class="">宝马</a>
+                    <a class="">奔驰</a>
+                    <a class="">日产</a>
+                    <a class="">现代</a>
+                    <a class="">丰田</a>
+                    <a class="">斯柯达</a>
+                    <a class="">本田</a>
+                    <a class="">起亚</a>
+                    <a class="">标致</a>
+                    <a class="">奥迪</a>
+                    <a class="">马自达</a>
+                    <a class="">比亚迪</a>
+                    <a class="">雪铁龙</a>
+                    <a class="">奇瑞</a>
+                    <!--品牌全部-->
+                    <div class="brand-all z30">
+                        <em data-role="show">全部<i></i></em>
+                        <div data-role="otherBrand" class="otherbrand" style="display: none;">
+                            <div class="o-b-box">
+                                <span class="arrow"><s></s></span>
+                                <ul data-role="letterNav" class="o-b-list">
+                                    <li class="clearfix">
+                                        <span>A</span>
+                                        <div>
+                                            <a href="/su/audi/">奥迪</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>B</span>
+                                        <div>
+                                            <a href="/su/baojun/">宝骏</a>
+                                            <a href="/su/bmw/">宝马</a>
+                                            <a href="/su/porsche/">保时捷</a>
+                                            <a href="/su/beijingqiche/">北京</a>
+                                            <a href="/su/beiqi/">北汽</a>
+                                            <a href="/su/benz/">奔驰</a>
+                                            <a href="/su/benteng/">奔腾</a>
+                                            <a href="/su/honda/">本田</a>
+                                            <a href="/su/biaozhi/">标致</a>
+                                            <a href="/su/buick/">别克</a>
+                                            <a href="/su/bentley/">宾利</a>
+                                            <a href="/su/byd/">比亚迪</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>C</span>
+                                        <div>
+                                            <a href="/su/changan/">长安</a>
+                                            <a href="/su/changanshangyong/">长安商用</a>
+                                            <a href="/su/changcheng/">长城</a>
+                                            <a href="/su/changhe/">昌河</a>
+                                            <a href="/su/chuanqi1/">传祺</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>D</span>
+                                        <div>
+                                            <a href="/su/daoqi/">道奇</a>
+                                            <a href="/su/datong/">大通</a>
+                                            <a href="/su/dazhong/">大众</a>
+                                            <a href="/su/dongfengfengdu/">东风风度</a>
+                                            <a href="/su/dongfengfengshen/">东风风神</a>
+                                            <a href="/su/fengxing/">东风风行</a>
+                                            <a href="/su/dongfengxiaokang/">东风小康</a>
+                                            <a href="/su/dongnan/">东南</a>
+                                            <a href="/su/ds/">DS</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>F</span>
+                                        <div>
+                                            <a href="/su/fiat/">菲亚特</a>
+                                            <a href="/su/toyota/">丰田</a>
+                                            <a href="/su/ford/">福特</a>
+                                            <a href="/su/futian/">福田</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>G</span>
+                                        <div>
+                                            <a href="/su/gmc/">GMC</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>H</span>
+                                        <div>
+                                            <a href="/su/hafu/">哈弗</a>
+                                            <a href="/su/haima/">海马</a>
+                                            <a href="/su/hongqi/">红旗</a>
+                                            <a href="/su/huansu/">幻速</a>
+                                            <a href="/su/huatai/">华泰</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>J</span>
+                                        <div>
+                                            <a href="/su/jeep/">Jeep</a>
+                                            <a href="/su/jianghuai/">江淮</a>
+                                            <a href="/su/jiangling/">江铃</a>
+                                            <a href="/su/jiao/">吉奥</a>
+                                            <a href="/su/jiebao/">捷豹</a>
+                                            <a href="/su/jili/">吉利</a>
+                                            <a href="/su/huachen/">金杯</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>K</span>
+                                        <div>
+                                            <a href="/su/cadillac/">凯迪拉克</a>
+                                            <a href="/su/krui/">开瑞</a>
+                                            <a href="/su/kaiyi/">凯翼</a>
+                                            <a href="/su/chrysler/">克莱斯勒</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>L</span>
+                                        <div>
+                                            <a href="/su/rolls-royce/">劳斯莱斯</a>
+                                            <a href="/su/lexus/">雷克萨斯</a>
+                                            <a href="/su/renault/">雷诺</a>
+                                            <a href="/su/liebao/">猎豹</a>
+                                            <a href="/su/lifan/">力帆</a>
+                                            <a href="/su/suzuki/">铃木</a>
+                                            <a href="/su/lincoln/">林肯</a>
+                                            <a href="/su/lufeng/">陆风</a>
+                                            <a href="/su/landrover/">路虎</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>M</span>
+                                        <div>
+                                            <a href="/su/maserati/">玛莎拉蒂</a>
+                                            <a href="/su/mazda/">马自达</a>
+                                            <a href="/su/mg1/">MG</a>
+                                            <a href="/su/mini/">MINI</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>N</span>
+                                        <div>
+                                            <a href="/su/dongfengyulongnazhijie/">纳智捷</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>O</span>
+                                        <div>
+                                            <a href="/su/opel/">欧宝</a>
+                                            <a href="/su/acura/">讴歌</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>Q</span>
+                                        <div>
+                                            <a href="/su/qichen/">启辰</a>
+                                            <a href="/su/lotus/">青年莲花</a>
+                                            <a href="/su/chery/">奇瑞</a>
+                                            <a href="/su/kia/">起亚</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>R</span>
+                                        <div>
+                                            <a href="/su/richan/">日产</a>
+                                            <a href="/su/rongwei/">荣威</a>
+                                            <a href="/su/ruilin/">瑞麒</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>S</span>
+                                        <div>
+                                            <a href="/su/mitsubishi/">三菱</a>
+                                            <a href="/su/shenbao/">绅宝</a>
+                                            <a href="/su/shuanglong/">双龙</a>
+                                            <a href="/su/subaru/">斯巴鲁</a>
+                                            <a href="/su/skoda/">斯柯达</a>
+                                            <a href="/su/siming/">思铭</a>
+                                            <a href="/su/smart/">Smart</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>T</span>
+                                        <div>
+                                            <a href="/su/tesila/">特斯拉</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>W</span>
+                                        <div>
+                                            <a href="/su/weiwang/">威旺</a>
+                                            <a href="/su/volvo/">沃尔沃</a>
+                                            <a href="/su/wuling/">五菱</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>X</span>
+                                        <div>
+                                            <a href="/su/brand-xiali/">夏利</a>
+                                            <a href="/su/hyundai/">现代</a>
+                                            <a href="/su/xiyate/">西雅特</a>
+                                            <a href="/su/chevrolet/">雪佛兰</a>
+                                            <a href="/su/citroen/">雪铁龙</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>Y</span>
+                                        <div>
+                                            <a href="/su/infiniti/">英菲尼迪</a>
+                                            <a href="/su/tj-yiqi/">一汽</a>
+                                            <a href="/su/nj-iveco/">依维柯</a>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <span>Z</span>
+                                        <div>
+                                            <a href="/su/huachen-zhonghua/">中华</a>
+                                            <a href="/su/zhongtai/">众泰</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--品牌全部-->
+                </dd>
+            </dl>
+            <dl class="fliter-bd clearfix">
+                <dt>车系：</dt>
+                <dd data-widget="app/ms_v2/vehicle/c2c/list_page.js#clickTagWidget">
+                    <a class="on">不限</a>
+                    <a class="">福克斯</a>
+                    <a class="">科鲁兹</a>
+                    <a class="">Polo</a>
+                    <a class="">蒙迪欧</a>
+                    <a class="">朗逸</a>
+                    <a class="">明锐</a>
+                    <a class="">君威</a>
+                    <a class="">英朗</a>
+                    <a class="">5系</a>
+                    <a class="">君越</a>
+                    <a class="">帕萨特</a>
+                    <a class="">C级</a>
+                    <a class="">凯越</a>
+                    <a class="">世嘉</a>
+                    <a class="">3系</a>
+
+                </dd>
+            </dl>
+            <dl class="fliter-bd clearfix">
+                <dt>价格：</dt>
+                <dd>
+                    <a class="on">不限</a>
+                    <a class="">5万以下</a>
+                    <a class="">5-10万</a>
+                    <a class="">10-15万</a>
+                    <a class="">15-20万</a>
+                    <a class="">20-30万</a>
+                    <a class="">30-40万</a>
+                    <a class="">40-60万</a>
+                    <a class="">60万以上</a>
+                    <span data-url-template="/su/buy/b{{begin}}e{{end}}/" data-widget="app/ms_v2/common/list_page.js#rangeFilter" class="input-box clearfix">
+                        <label>
+                            <input type="text" value="" data-default-value="0" size="4" class="js-begin" maxlength="3" id="my_price_b" name="b">
+                        </label>
+                        <label><i class="input-line">-</i></label>
+                        <label>
+                            <input type="text" value="" data-default-value="999" size="4" class="js-end" maxlength="3" id="my_price_e" name="e">
+                        </label>
+                        <label class="input-unit">万</label>
+                        <label><a gjalog="" href="#" class="input-btn js-btn">筛选</a></label>
+                    </span>
+                </dd>
+            </dl>
+            <dl class="fliter-bd clearfix">
+                <dt>车龄：</dt>
+                <dd>
+                    <a>不限</a>
+                    <a>5年以上</a>
+                    <a>5年内</a>
+                    <a>3年内</a>
+                    <a>1年以内</a>
+                </dd>
+            </dl>
+            <dl class="moreitem clearfix">
+                <dt>更多：</dt>
+                <dd data-widget="app/ms_v2/vehicle/ershouche/list_page_v2.js#hoverWidget" gjalog="100000000641000100000010">
+                    <div class="moreitem-btn">
+                        <a href="#">车型</a>
+                    </div>
+                    <div class="moreitem-box">
+                        <div class="m-i-w1">
+                            <div class="moreitem-opts">
+                                <a class="one">不限</a>
+                                <a class="">两厢轿车</a>
+                                <a class="">三厢轿车</a>
+                                <a class="">SUV</a>
+                                <a class="">MPV</a>
+                                <a class="">跑车</a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+                <dd class="" data-widget="app/ms_v2/vehicle/ershouche/list_page_v2.js#hoverWidget" gjalog="100000000643000100000010">
+                    <div class="moreitem-btn">
+                        <a href="#">行驶里程</a>
+                    </div>
+                    <div class="moreitem-box">
+                        <div class="m-i-w1">
+                            <div class="moreitem-opts">
+                                <a>不限</a>
+                                <a>1万公里内</a>
+                                <a>3万公里内</a>
+                                <a>5万公里内</a>
+                                <a>5万公里以上</a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+                <dd data-widget="app/ms_v2/vehicle/ershouche/list_page_v2.js#hoverWidget" gjalog="100000000644000100000010">
+                    <div class="moreitem-btn">
+                        <a href="#">变速箱</a>
+                    </div>
+                    <div class="moreitem-box">
+                        <div class="m-i-w1">
+                            <div class="moreitem-opts">
+                                <a class="one">不限</a>
+                                <a class="">手动</a>
+                                <a class="">自动</a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+                <dd data-widget="app/ms_v2/vehicle/ershouche/list_page_v2.js#hoverWidget" gjalog="100000000645000100000010">
+                    <div class="moreitem-btn">
+                        <a href="#">排量</a>
+                    </div>
+                    <div class="moreitem-box">
+                        <div class="m-i-w1">
+                            <div class="moreitem-opts">
+                                <a class="one">不限</a>
+                                <a class="">1.0L以下</a>
+                                <a class="">1.0-1.6L</a>
+                                <a class="">1.6-2.0L</a>
+                                <a class="">2.0-3.0L</a>
+                                <a class="">3.0L以上</a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+                <dd data-widget="app/ms_v2/vehicle/ershouche/list_page_v2.js#hoverWidget" gjalog="100000000646000100000010">
+                    <div class="moreitem-btn">
+                        <a href="#">排放标准</a>
+                    </div>
+                    <div class="moreitem-box">
+                        <div class="m-i-w1">
+                            <div class="moreitem-opts">
+                                <a>不限</a>
+                                <a>国二及以上</a>
+                                <a>国三及以上</a>
+                                <a>国四及以上</a>
+                                <a>国五</a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+                <dd class="" data-widget="app/ms_v2/vehicle/ershouche/list_page_v2.js#hoverWidget" gjalog="100000000647000100000010">
+                    <div class="moreitem-btn">
+                        <a href="#">颜色</a>
+                    </div>
+                    <div class="moreitem-box">
+                        <div class="m-i-w1 moreitem-color">
+                            <div class="moreitem-opts">
+                                <a class="cur">不限</a>
+                                <a class=""><i class="c-lump03"></i>黑色</a>
+                                <a class=""><i class="c-lump04"></i>白色</a>
+                                <a class=""><i class="c-lump10"></i>银灰色</a>
+                                <a class=""><i class="c-lump15"></i>深灰色</a>
+                                <a class=""><i class="c-lump09"></i>红色</a>
+                                <a class=""><i class="c-lump11"></i>橙色</a>
+                                <a class=""><i class="c-lump02"></i>绿色</a>
+                                <a class=""><i class="c-lump05"></i>蓝色</a>
+                                <a class=""><i class="c-lump06"></i>咖啡色</a>
+                                <a class=""><i class="c-lump07"></i>紫色</a>
+                                <a class=""><i class="c-lump08"></i>香槟色</a>
+                                <a class=""><i class="c-lump12"></i>多彩色</a>
+                                <a class=""><i class="c-lump13"></i>黄色</a>
+                                <a class=""><i class="c-lump14"></i>其它</a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+                <dd data-widget="app/ms_v2/vehicle/ershouche/list_page_v2.js#hoverWidget" gjalog="100000000648000100000010">
+                    <div class="moreitem-btn">
+                        <a href="#">国别</a>
+                    </div>
+                    <div class="moreitem-box">
+                        <div class="m-i-w1">
+                            <div class="moreitem-opts">
+                                <a class="one">不限</a>
+                                <a class="">德系</a>
+                                <a class="">日系</a>
+                                <a class="">美系</a>
+                                <a class="">法系</a>
+                                <a class="">韩系</a>
+                                <a class="">国产</a>
+                                <a class="">其他</a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+
+            </dl>
+        </div>
+
+    </div>
+    <!-- 筛选  e -->
+    <!-- 排序  s -->
+    <div class="seqBox clearfix">
+        <ul class="sequen">
+            <li class="first"><a>默认排序</a></li>
+            <li>
+                <a>
+                    价格<i class="up"></i>
+                </a>
+            </li>
+            <li>
+                <a>
+                    车龄<i class="up"></i>
+                </a>
+            </li>
+            <li>
+                <a>
+                    里程<i class="up"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- 排序  e -->
+    <!-- 车辆列表  s -->
+    <div class="row" style="margin-top:10px;">
+        <div class="col-xs-3">
+            <a href="#" class="thumbnail">
+                <img src="http://image.guazistatic.com/gz01160326/14/01/b0bc020972e6cb69ae9e430c692f6362.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" style="height: 180px; width: 100%; display: block;" alt="">
+            </a>
+            <div class="caption">
+                @*35.95万 46.60万*@
+                <a class="info_title">奔驰E级 2015款 E 200 L 2.0T 自动</a>
+                <p class="info_gray">2015年7月上牌 | 行驶0.8万公里</p>
+                <p class="info_price">
+                    <span>35.95万</span>
+                    <s>46.60万</s>
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <a href="#" class="thumbnail">
+                <img src="http://image.guazistatic.com/gz01160326/14/01/b0bc020972e6cb69ae9e430c692f6362.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" style="height: 180px; width: 100%; display: block;" alt="">
+            </a>
+            <div class="caption">
+                @*35.95万 46.60万*@
+                <a class="info_title">奔驰E级 2015款 E 200 L 2.0T 自动</a>
+                <p class="info_gray">2015年7月上牌 | 行驶0.8万公里</p>
+                <p class="info_price">
+                    <span>35.95万</span>
+                    <s>46.60万</s>
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <a href="#" class="thumbnail">
+                <img src="http://image.guazistatic.com/gz01160326/14/01/b0bc020972e6cb69ae9e430c692f6362.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" style="height: 180px; width: 100%; display: block;" alt="">
+            </a>
+            <div class="caption">
+                @*35.95万 46.60万*@
+                <a class="info_title">奔驰E级 2015款 E 200 L 2.0T 自动</a>
+                <p class="info_gray">2015年7月上牌 | 行驶0.8万公里</p>
+                <p class="info_price">
+                    <span>35.95万</span>
+                    <s>46.60万</s>
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <a href="#" class="thumbnail">
+                <img src="http://image.guazistatic.com/gz01160326/14/01/b0bc020972e6cb69ae9e430c692f6362.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" style="height: 180px; width: 100%; display: block;" alt="">
+            </a>
+            <div class="caption">
+                @*35.95万 46.60万*@
+                <a class="info_title">奔驰E级 2015款 E 200 L 2.0T 自动</a>
+                <p class="info_gray">2015年7月上牌 | 行驶0.8万公里</p>
+                <p class="info_price">
+                    <span>35.95万</span>
+                    <s>46.60万</s>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px;">
+        <div class="col-xs-3">
+            <a href="#" class="thumbnail">
+                <img src="http://image.guazistatic.com/gz01160326/14/01/b0bc020972e6cb69ae9e430c692f6362.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" style="height: 180px; width: 100%; display: block;" alt="">
+            </a>
+            <div class="caption">
+                @*35.95万 46.60万*@
+                <a class="info_title">奔驰E级 2015款 E 200 L 2.0T 自动</a>
+                <p class="info_gray">2015年7月上牌 | 行驶0.8万公里</p>
+                <p class="info_price">
+                    <span>35.95万</span>
+                    <s>46.60万</s>
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <a href="#" class="thumbnail">
+                <img src="http://image.guazistatic.com/gz01160326/14/01/b0bc020972e6cb69ae9e430c692f6362.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" style="height: 180px; width: 100%; display: block;" alt="">
+            </a>
+            <div class="caption">
+                @*35.95万 46.60万*@
+                <a class="info_title">奔驰E级 2015款 E 200 L 2.0T 自动</a>
+                <p class="info_gray">2015年7月上牌 | 行驶0.8万公里</p>
+                <p class="info_price">
+                    <span>35.95万</span>
+                    <s>46.60万</s>
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <a href="#" class="thumbnail">
+                <img src="http://image.guazistatic.com/gz01160326/14/01/b0bc020972e6cb69ae9e430c692f6362.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" style="height: 180px; width: 100%; display: block;" alt="">
+            </a>
+            <div class="caption">
+                @*35.95万 46.60万*@
+                <a class="info_title">奔驰E级 2015款 E 200 L 2.0T 自动</a>
+                <p class="info_gray">2015年7月上牌 | 行驶0.8万公里</p>
+                <p class="info_price">
+                    <span>35.95万</span>
+                    <s>46.60万</s>
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <a href="#" class="thumbnail">
+                <img src="http://image.guazistatic.com/gz01160326/14/01/b0bc020972e6cb69ae9e430c692f6362.jpg@base@tag=imgScale&w=600&h=400&c=1&m=2&q=88" style="height: 180px; width: 100%; display: block;" alt="">
+            </a>
+            <div class="caption">
+                @*35.95万 46.60万*@
+                <a class="info_title">奔驰E级 2015款 E 200 L 2.0T 自动</a>
+                <p class="info_gray">2015年7月上牌 | 行驶0.8万公里</p>
+                <p class="info_price">
+                    <span>35.95万</span>
+                    <s>46.60万</s>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- 车辆列表  e -->
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+
+            //更多 鼠标滑过事件
+            $(".moreitem dd").hover(function () {
+                $(this).addClass("active");
+            }, function () {
+                $(this).removeClass("active");
+            });
+
+            //更多 菜单单击事件
+            $(".moreitem-box .moreitem-opts a").click(function () {
+                var content = $(this).text();
+                $moreitem_btn = $(this).parents(".moreitem-box").prev(".moreitem-btn");
+                $dd = $(this).parents(".moreitem-box").parents("dd");
+
+                $dd.removeClass("active");
+                if (content != "不限") {
+                    $moreitem_btn.children("a").text(content);
+                    $(this).addClass("active");
+                }
+            });
+        });
+    </script>
+}

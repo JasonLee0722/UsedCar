@@ -1,0 +1,170 @@
+﻿@model Models.CarModel
+
+@{
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
+
+    ViewBag.Title = "汽车型号字典编辑";
+    ViewBag.SubTitle = "汽车型号字典添加、修改";
+
+    ViewBag.ParentTitle = "汽车型号管理";
+}
+
+@section Styles{
+    <style type="text/css">
+        .has-feedback .form-control {
+            padding-right: 5px;
+            display: inline-block;
+        }
+    </style>
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/JQValidation")
+    <script src="~/Scripts/UserJS/FormValidation.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var _rules = {
+                Brand: {
+                    required: true,
+                    maxlength: 20
+                },
+                Name: {
+                    required: true,
+                    maxlength: 50,
+                    remote: {
+                        url: "/Dic/validCarModelUnique",     //后台处理程序
+                        type: "get",               //数据发送方式
+                        dataType: "json"           //接受数据格式
+                    }
+                },
+                Year: {
+                    required: true,
+                    number: true,
+                    maxlength: 4
+                }
+            };
+            _messages = {
+                Name: {
+                    remote: "此名称已被占用！"
+                }
+
+            };
+            FormValidation.init(_rules, _messages);
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            //品牌变更车型跟随变化
+            $("#dev_cs").change(function () {
+                $("#dev_ct").attr("disabled", "disabled");
+                $("#dev_ct").val("0");
+                if ($("#dev_cs").val() == "1") {
+                    $("#dev_ct").removeAttr("disabled");
+                }
+            });
+        })
+    </script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@ViewBag.Title</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @*<div class="form-group has-feedback">
+                <label class="control-label col-xs-2" for="Code">
+                    代号
+                </label>
+                <div class="col-xs-10">
+                    <input type="text" value="@Model.Code" name="Code" id="Code" class="form-control single-line">
+                    <span class="glyphicon form-control-feedback"></span>
+                </div>
+            </div>*@
+        @Html.HiddenFor(m => m.SerieID)
+        @Html.HiddenFor(m => m.Addtime)
+        @Html.HiddenFor(m => m.State)
+
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="Name">
+                车型名称
+            </label>
+            <div class="col-xs-10">
+
+                @if (Model.ID == 0)
+                {
+                    <input type="text" value="@Model.Name" name="Name" id="Name" class="form-control single-line">
+                }
+                else
+                {
+                    @Html.HiddenFor(m => m.Name)
+                    <input type="text" value="@Model.Name" class="form-control single-line" disabled='disabled'>
+                }
+
+                <span class="required"> * </span>
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="Year">
+                生产年份
+            </label>
+            <div class="col-xs-10">
+
+                <input type="text" value="@Model.Year" name="Year" id="Year" class="form-control single-line">
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="Year">
+                品牌代码
+            </label>
+            <div class="col-xs-10">
+                <select class="form-control" id="dev_cs" name="dev_cs" style="padding-right:0;">
+                    <option value="0" @(Model.dev_cs == 0 ? "selected" : "")>请选择品牌代码(for OBD)</option>
+                    <option value="1" @(Model.dev_cs == 1 ? "selected" : "")>福特</option>
+                    <option value="2" @(Model.dev_cs == 2 ? "selected" : "")>大众</option>
+                    <option value="3" @(Model.dev_cs == 3 ? "selected" : "")>宝马</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="devct_area" class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="Year">
+                车型代码
+            </label>
+            <div class="col-xs-10">
+                <select class="form-control" id="dev_ct" name="dev_ct" style="padding-right:0;" disabled="disabled">
+                    <option value="0" @(Model.dev_ct == 0 ? "selected" : "")>请选择车型代码(for OBD)</option>
+                    <option value="1" @(Model.dev_ct == 1 ? "selected" : "")>翼搏</option>
+                    <option value="2" @(Model.dev_ct == 2 ? "selected" : "")>锐界2.0</option>
+                    <option value="3" @(Model.dev_ct == 3 ? "selected" : "")>锐界3.5</option>
+                    <option value="5" @(Model.dev_ct == 5 ? "selected" : "")>嘉年华</option>
+                    <option value="6" @(Model.dev_ct == 6 ? "selected" : "")>经典福克斯1.8</option>
+                    <option value="7" @(Model.dev_ct == 7 ? "selected" : "")>经典福克斯2.0</option>
+                    <option value="8" @(Model.dev_ct == 8 ? "selected" : "")>翼虎1.6</option>
+                    <option value="9" @(Model.dev_ct == 9 ? "selected" : "")>翼虎2.0</option>
+                    <option value="10" @(Model.dev_ct == 10 ? "selected" : "")>蒙迪欧-致胜2.0T</option>
+                    <option value="10" @(Model.dev_ct == 10 ? "selected" : "")>蒙迪欧-致胜2.0</option>
+                    <option value="11" @(Model.dev_ct == 11 ? "selected" : "")>蒙迪欧-致胜2.3</option>
+                    <option value="12" @(Model.dev_ct == 12 ? "selected" : "")>新福克斯</option>
+                    <option value="13" @(Model.dev_ct == 13 ? "selected" : "")>新蒙迪欧1.5</option>
+                    <option value="14" @(Model.dev_ct == 14 ? "selected" : "")>新蒙迪欧2.0</option>
+                    <option value="15" @(Model.dev_ct == 15 ? "selected" : "")>麦柯斯</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+                <input type="submit" value="保存" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="alert alert-success feedinfo" role="alert"></div>
+    </div>
+}

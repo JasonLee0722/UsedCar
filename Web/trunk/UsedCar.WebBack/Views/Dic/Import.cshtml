@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
+
+    ViewBag.Title = "车辆品牌导入";
+    ViewBag.SubTitle = "车辆品牌型号导入";
+
+    ViewBag.ParentTitle = "字典管理";
+}
+
+@section Styles{
+    <style type="text/css">
+        .has-feedback .form-control {
+            padding-right: 5px;
+            display: inline-block;
+        }
+    </style>
+}
+
+@using (Html.BeginForm("ImportExcel", "Dic", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="text-center" style="margin-top:30px;">
+        <input type="file" id="fileUpload" name="fileUpload" size="25" value="选择excel" class="text-center" />
+        <input type="submit" value="导入" style="margin-top:30px;" id="import" />
+    </div>
+    <div id="loading" class="text-center" style="display:none;"><img src="~/Content/images/loading-lg.gif" /></div>
+}
+@section Scripts{
+    <script type="text/javascript">
+
+        jQuery(document).ready(function () {
+            $("#import").click(function () {
+                $("#loading").css("display", "block");
+            });
+        });
+    </script>
+
+}
+
+

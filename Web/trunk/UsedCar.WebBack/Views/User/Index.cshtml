@@ -1,0 +1,96 @@
+﻿@model IEnumerable<SysUser>
+
+@{
+    ViewBag.Title = "用户管理";
+    ViewBag.ParentTitle = "系统管理";
+}
+
+<div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-user"></i> @ViewBag.Title</h2>
+        <div class="box-icon">
+            @*<a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>*@
+            <a href="#" class="btn btn-minimize btn-round btn-default">
+                <i class="glyphicon glyphicon-chevron-up"></i>
+            </a>
+            @*<a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>*@
+        </div>
+    </div>
+    <div class="box-content">
+        <div class="alert alert-info">系统用户信息添加、修改、删除。</div>
+        <table class="table table-striped bootstrap-datatable datatable responsive">
+            <thead>
+                <tr>
+                    <th>用户账号</th>
+                    <th>用户名称</th>
+                    <th>身份证号</th>
+                    <th>联系电话</th>
+                    <th>地址</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.LoginName</td>
+                        <td class="center">@item.Name</td>
+                        <td class="center">@item.CardNo</td>
+                        <td class="center">
+                            @*<span class="label-success label label-default">Active</span>*@
+                            @item.Phone
+                        </td>
+                        <td class="center">@item.Address</td>
+                        <td class="center">@item.StateName</td>
+                        <td class="center">
+                            <a class="btn btn-success" href="javascript:void(0);" onclick="ColorBoxPop('/user/details/@item.Id')">
+                                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                                查看
+                            </a>
+                            <a class="btn btn-info" href="javascript:void(0);" onclick="ColorBoxPop('/User/Edit/@item.Id')">
+                                <i class="glyphicon glyphicon-edit icon-white"></i>
+                                编辑
+                            </a>
+                            <a class="btn btn-danger" href="javascript:void(0);" onclick="AjaxDelete('/User/Delete/@item.Id')">
+                                <i class="glyphicon glyphicon-trash icon-white"></i>
+                                删除
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<input type="hidden" id="apihost" value="@Common.Utils.WEBUtility.WebApiHost" />
+@section scripts{
+    <script type="text/javascript">
+        var _apiHost = '';
+        $(function () {
+            _apiHost = $('#apihost').val();
+            //LoadData();
+        });
+
+        function LoadData(index) {
+
+            $.getJSON(_apiHost + '/api/user/all', function (data) {
+                //alert(data);
+                var data1 = [{ "Id": 1, "LoginName": "admin", "LoginPwd": "111111", "Name": "yuer", "CardNo": "123456789", "State": 1, "Phone": "18662574664", "Address": "吴江科技创业园" }, { "Id": 1, "LoginName": "admin1", "LoginPwd": "111111", "Name": "yuer1", "CardNo": "123456789", "State": 1, "Phone": "18662574664", "Address": "吴江科技创业园" }];
+                $('.datatable').dataTable({
+                    data: data,
+                    columns: [
+                        { data: 'LoginName' },
+                        { data: 'Name' },
+                        { data: 'CardNo' },
+                        { data: 'Phone' },
+                        { data: 'Address' },
+                        { data: 'State' }
+                    ]
+                });
+            });
+        }
+
+    </script>
+}

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SysUserRole>
+
+@{
+    ViewBag.Title = "用户角色";
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
+}
+
+@section Styles{
+    <link href="~/Content/multi-select/css/multi-select.css" rel="stylesheet" />
+    <style type="text/css">
+    </style>
+}
+
+@section Scripts{
+    <script src="~/Content/multi-select/js/jquery.multi-select.js"></script>
+    <script src="~/Scripts/UserJS/AjaxPost.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#RoleAllocation').multiSelect({
+                selectableOptgroup: true,
+                selectableHeader: "<div class='custom-header'>未分配角色</div>",
+                selectionHeader: "<div class='custom-header'>已分配角色</div>"
+            });
+            AjaxPost.init();
+        });
+        function select_all() {
+            $('#RoleAllocation').multiSelect('select_all');
+        }
+        function deselect_all() {
+            $('#RoleAllocation').multiSelect('deselect_all');
+        }
+        function save() {
+            var _Vals = '';
+            //获取所有已选择项，然后提交
+            $('#RoleAllocation option:selected').each(function (index, element) {
+                _Vals += ',' + $(element).val();
+            });
+            AjaxPost.PostSubmit('/SysManage/SysUserRoleEdit', { id: $('#sysuserguid').val(), RoleIDs: _Vals });
+        }
+    </script>
+}
+<input type="hidden" id="sysuserguid" value="@ViewContext.RouteData.Values["id"]" />
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="display:inline-block;">用户角色分配</h3>
+        <div class="pull-right" style="margin-top: -2px;">
+            <div class="btn btn-info" onclick="select_all();">选择全部</div>
+            <div class="btn btn-info" onclick="deselect_all();">取消全选</div>
+            <div class="btn btn-primary" onclick="save();"><i class="glyphicon glyphicon-floppy-save"></i> 保存</div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <select id='RoleAllocation' multiple='multiple'>
+            @foreach (var item in (List<Role>)ViewBag.Roles)
+            {
+                @*<optgroup label='Friends'>*@
+                if (Model.Where(m => m.RoleID == item.ID).Count() > 0)
+                {
+                    <option value='@item.ID' selected>@item.Name</option>
+                }
+                else
+                {
+                    <option value='@item.ID'>@item.Name</option>
+                }
+                @*</optgroup>*@
+            }
+        </select>
+        <div class="alert alert-success feedinfo" role="alert"></div>
+    </div>
+</div>

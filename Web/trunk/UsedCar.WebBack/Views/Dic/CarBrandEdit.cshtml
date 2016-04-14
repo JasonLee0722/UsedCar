@@ -1,0 +1,139 @@
+﻿@model Models.CarBrand
+
+@{
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
+
+    ViewBag.Title = "车辆品牌型号字典编辑";
+    ViewBag.SubTitle = "车辆品牌型号字典添加、修改";
+
+    ViewBag.ParentTitle = "字典管理";
+}
+
+@section Styles{
+    <style type="text/css">
+        .has-feedback .form-control { padding-right: 5px; display: inline-block; }
+    </style>
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/JQValidation")
+
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script src="~/Scripts/UserJS/FormValidation.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var _rules = {
+                Brand: {
+                    required: true,
+                    maxlength: 20,
+                    remote: {
+                        url: "/Dic/validCarBrandUnique",     //后台处理程序
+                        type: "get",               //数据发送方式
+                        dataType: "json"           //接受数据格式
+                    }
+                },
+                //Name: {
+                //    required: true,
+                //    maxlength: 50
+                //},
+                Sort: {
+                    required: true
+                }
+            };
+            _messages = {
+                Brand: {
+                    remote: "此名称已被占用！"
+                }
+            };
+            FormValidation.init(_rules, _messages);
+        });
+
+    </script>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@ViewBag.Title</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @*<div class="form-group has-feedback">
+                <label class="control-label col-xs-2" for="Code">
+                    代号
+                </label>
+                <div class="col-xs-10">
+                    <input type="text" value="@Model.Code" name="Code" id="Code" class="form-control single-line">
+                    <span class="glyphicon form-control-feedback"></span>
+                </div>
+            </div>*@
+
+        @*@Html.HiddenFor(m => m.PanrentID)*@
+        @Html.HiddenFor(m => m.State)
+        @Html.HiddenFor(m => m.AddTime)
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="Brand">
+                名称
+            </label>
+            <div class="col-xs-10">
+                @if (Model.ID == 0)
+                {
+                    <input type="text" value="@Model.Brand" name="Brand" id="Brand" class="form-control single-line">
+                }
+                else
+                {
+                    @Html.HiddenFor(m => m.Brand)
+
+                    <input type="text" value="@Model.Brand" class="form-control single-line" disabled='disabled'>
+                }
+
+                <span class="required"> * </span>
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="Pic">
+                图片
+            </label>
+            <div class="col-xs-10">
+                <textarea class="form-control" name="Pic" id="Pic" rows="3">@Model.Pic</textarea>
+            </div>
+        </div>
+
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="_Sort">品牌首字母</label>
+            <div class="col-xs-10">
+                <input type="text" value="@Model.Sort" name="Sort" id="Sort" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="BrandCode">品牌代码</label>
+            <div class="col-xs-10">
+                <input type="text" value="@Model.BrandCode" placeholder="对应于故障码解析接口的品牌代码" title="对应于故障码解析接口的品牌代码" name="BrandCode" id="BrandCode" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-2" for="dev_cs">车系参数</label>
+            <div class="col-xs-10">
+                <input type="number" min="0" value="@Model.dev_cs" placeholder="对应于OBD的车系参数" title="对应于OBD的车系参数" name="dev_cs" id="dev_cs" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+                <input id="btnSubmit" type="submit" value="保存" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="alert alert-success feedinfo" role="alert"></div>
+    </div>
+}

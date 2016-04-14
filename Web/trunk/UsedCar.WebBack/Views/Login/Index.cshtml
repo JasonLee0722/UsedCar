@@ -1,0 +1,149 @@
+﻿@model string
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="wdf2gy">
+    <!-- The styles -->
+    <link id="bs-css" href="~/Content/charisma/css/bootstrap-cerulean.min.css" rel="stylesheet">
+    <link href="~/Content/charisma/css/charisma-app.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="~/Content/charisma/bower_components/jquery/jquery.min.js"></script>
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<body>
+    <div class="ch-container">
+        <div class="row">
+
+            <div class="row">
+                <div class="col-md-12 center login-header">
+                    <h2>二手车后台管理系统</h2>
+                </div>
+                <!--/span-->
+            </div><!--/row-->
+            <div class="row">
+                <div class="well col-md-5 center login-box">
+                    @if (string.IsNullOrEmpty(Model))
+                    {
+                        <div class="alert alert-info">
+                            请输入您的用户名及密码.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger">
+                            @Model
+                        </div>
+                    }
+
+                    <form class="form-horizontal" method="post">
+                        <fieldset>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
+                                <input id="UserName" name="UserName" type="text" class="form-control" placeholder="用户名">
+                            </div>
+                            <div class="clearfix"></div><br>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
+                                <input id="pwd" name="pwd" type="password" class="form-control" placeholder="密码">
+                            </div>
+                            <div class="clearfix"></div>
+                            @*<div class="input-prepend">
+                                    <label class="remember" for="remember"><input type="checkbox" id="remember"> Remember me</label>
+                                </div>
+                                <div class="clearfix"></div>*@
+                            <p class="center col-md-5">
+                                <button type="button" class="btn btn-primary" onclick="submitForm();">登录</button>
+                            </p>
+                        </fieldset>
+                    </form>
+                </div>
+                <!--/span-->
+            </div><!--/row-->
+        </div><!--/fluid-row-->
+    </div><!--/.fluid-container-->
+    <!-- external javascript -->
+    <input type="hidden" id="apihost" value="@Common.Utils.WEBUtility.WebApiHost" />
+    <script src="~/Content/charisma/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+    var api_address = "";
+    $(function () {
+        api_address = $('#apihost').val();
+    });
+    function submitForm() {
+        if ($('#UserName').val() == '') {
+            alert("请输入用户名");
+            return;
+        }
+        if ($('#pwd').val() == '') {
+            alert("请输入密码");
+            return;
+        }
+        $('form').submit();
+    }
+    function getToken() {
+        var username = $('#UserName').val();
+        var password = $('#pwd').val();
+        //start ajax
+        $.ajax({
+            type: "POST",
+            url: api_address + "/token", //api_address为WebApi服务地址，由于OAuth的使用中设置了属性TokenEndpointPath = new PathString("/token")，所以请求到“token”链接时即可自动进入认证流程。
+            data: { grant_type: "password", username: username, password: password, ran: Math.random() },//传递用户名、密码、认证方式
+            dataType: "json",
+            success: function (result) {
+                if (result.access_token && result.access_token.length > 0) {
+                    //result.access_token即是有效的服务调用凭证，可以把该值存入到Cookie中，以备下次使用。
+                    //callback(1, "登录成功。");
+                    $.cookie("access_token", result.access_token);
+                    alert(result.access_token);
+                }
+                else {
+                    //callback(0, "未知错误！");
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                //callback(0, XMLHttpRequest.responseJSON.error);
+            }
+        });
+        //end ajax
+    }
+    function AjaxWithToken(method, apiurl, data) {
+        //apiurl “api/Test”,//如果调用webapi中的TestController
+        //data : {data}
+        //get token cache from cookie
+        var token = $.cookie("access_token");
+        if (token && token.length > 0) {
+            $.ajax({
+                type: method,//get,post,put,delete
+                url: api_address + apiurl,//如果调用webapi中的TestController
+                data: data,
+                dataType: "json",
+                headers: {
+                    "Authorization": "Bearer " + token //把登录获取的Token加入到http请求头中
+                },
+                success: function (result) {
+                    //callback(result);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //。。。。。。
+                }
+            });
+        }
+    }
+</script>

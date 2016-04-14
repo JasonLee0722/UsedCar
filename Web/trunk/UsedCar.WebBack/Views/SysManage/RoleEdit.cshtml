@@ -1,0 +1,94 @@
+﻿@model Role
+
+@{
+    ViewBag.Title = "角色编辑";
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
+    //Layout = null;
+}
+@section Styles{
+    <style type="text/css">
+        .has-feedback .form-control {
+            padding-right: 25px;
+            display: inline-block;
+        }
+
+        .form-horizontal .has-feedback .form-control-feedback {
+            right: 15px;
+        }
+    </style>
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/JQValidation")
+    <script src="~/Scripts/UserJS/FormValidation.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var _rules = {
+                Name: {
+                    required: true,
+                    maxlength: 20
+                },
+                RoleLevel: {
+                    required: true,
+                    min: 0
+                },
+                Remark: {
+                    maxlength: 50
+                }
+            };
+            _messages = {
+            };
+            FormValidation.init(_rules, _messages);
+
+        });
+    </script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@ViewBag.Title</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.AddTime)
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="Name">
+                角色名称
+                <span class="required"> * </span>
+            </label>
+            <div class="col-xs-9">
+                <input type="text" value="@Model.Name" name="Name" id="Name" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+        @*<div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="RoleLevel">
+                角色级别
+                <span class="required"> * </span>
+            </label>
+            <div class="col-xs-9">
+                <input type="number" value="@Model.RoleLevel" name="RoleLevel" id="RoleLevel" min="0" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>*@
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="Remark">
+                角色备注
+            </label>
+            <div class="col-xs-9">
+                <input type="text" value="@Model.Desc" name="Desc" id="Remark" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <input type="submit" value="保 存" class="btn btn-primary" />
+            </div>
+        </div>
+
+        <div class="alert alert-success feedinfo" role="alert"></div>
+    </div>
+}

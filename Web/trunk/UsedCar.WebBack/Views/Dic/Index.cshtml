@@ -1,0 +1,120 @@
+﻿@model IPagedList<DicName>
+@{
+    switch ((string)ViewBag.DicType)
+    {
+        case "Brand":
+            ViewBag.Title = "车辆品牌型号管理";
+            ViewBag.SubTitle = "车辆品牌型号字典管理";
+            break;
+        case "CarParts":
+            ViewBag.Title = "常见汽车配件管理";
+            ViewBag.SubTitle = "常见汽车配件字典管理";
+            break;
+        case "OBDFault":
+            ViewBag.Title = "OBD故障码管理";
+            ViewBag.SubTitle = "OBD故障码字典管理";
+            break;
+        default:
+            ViewBag.Title = "其它信息";
+            ViewBag.SubTitle = "其它信息字典管理";
+            break;
+    }
+    ViewBag.ParentTitle = "字典管理";
+    int iItem = ViewBag.NumberStart;
+
+    //----------定义导航菜单----------
+    var NavList = new Dictionary<string, string>();
+    NavList.Add("字典管理", "#");
+    NavList.Add("字典类型管理", "/Dic/DicTypeIndex");
+    ViewBag.NavList = NavList;
+    //----------定义导航菜单----------
+}
+
+@section Styles{
+    @Styles.Render("~/Content/ColorBox/css1")
+    <style type="text/css">
+    </style>
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/ColorBox")
+    <script src="~/Scripts/UserJS/TableManage.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            TableManage.init();
+        });
+    </script>
+}
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            <input type="checkbox" class="group-checkable" data-set=".checkboxes" />
+        </th>
+        <th>
+            序号
+        </th>
+        <th>
+            键值
+        </th>
+        <th>
+            键名
+        </th>
+        <th>
+            备注
+        </th>
+        <th>
+            排序
+        </th>
+        <th>
+            <a href="#" onclick="TableManage.Edit('/Dic/DicEdit?DicType=@ViewBag.DicType',450,450)">添加</a> |
+            <a href="#" onclick="TableManage.BatchDelete('/Dic/DicBatchDelete')">删除</a>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <input class="checkboxes" type="checkbox" value="@item.ID" />
+            </td>
+            <td>@(iItem++)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KeyValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sort)
+            </td>
+            <td>
+                <a href="#" onclick="TableManage.Edit('/Dic/DicEdit/@item.ID',450,450)">编辑</a> |
+                <a href="#" onclick="TableManage.Delete('/Dic/DicDelete/@item.ID')">删除</a>
+            </td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager(Model, pageIndex => Url.Action("Index", new { PageIndex = pageIndex }), new PagedListRenderOptions()
+{
+    //DisplayLinkToIndividualPages = true,
+    DisplayPageCountAndCurrentLocation = true,
+
+    //MaximumPageNumbersToDisplay = 10,
+    //DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+    //EllipsesFormat = "&#8230;",
+    //LinkToFirstPageFormat = "««",
+    //LinkToPreviousPageFormat = "«",
+    //LinkToIndividualPageFormat = "{0}",
+    //LinkToNextPageFormat = "»",
+    //LinkToLastPageFormat = "»»",
+    PageCountAndCurrentLocationFormat = Model.TotalItemCount == 0 ? "无记录" : "{0}/{1}",
+    //ItemSliceAndTotalFormat = "Showing items {0} through {1} of {2}.",
+    //FunctionToDisplayEachPageNumber = null,
+    //ClassToApplyToFirstListItemInPager = null,
+    //ClassToApplyToLastListItemInPager = null,
+    //ContainerDivClasses = new[] { "pagination-container" },
+    UlElementClasses = new[] { "pagination pull-right" }
+})

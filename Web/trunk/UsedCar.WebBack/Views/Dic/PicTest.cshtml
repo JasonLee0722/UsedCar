@@ -1,0 +1,194 @@
+﻿@model Models.CarBrand
+@{
+    Layout = "~/Views/Shared/_BlankLayout.cshtml";
+
+    ViewBag.Title = "车辆品牌型号字典编辑";
+    ViewBag.SubTitle = "车辆品牌型号字典添加、修改";
+
+    ViewBag.ParentTitle = "字典管理";
+}
+@section Styles{
+    <style type="text/css">
+        .has-feedback .form-control { padding-right: 5px; display: inline-block; }
+
+        input.error { border: 1px solid red; }
+
+        .help-inline { color: red; font-style: normal; }
+    </style>
+}
+@section Scripts{
+    @*@Scripts.Render("~/bundles/JQValidation")*@
+
+    <script src="~/Scripts/jquery.form.js"></script>
+    @*<script src="~/Scripts/UserJS/FormValidation.js"></script>*@
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            $("#btnSubmit").click(function () {
+                CheckBrand();
+                CheckSort();
+                if ($("#Csort").val() == "1" && $("#Cbrand").val() == "1") {
+
+                    $("form.Edit_From").submit();
+                }
+
+            });
+            $("#Brand").change(function () {
+                CheckBrand()
+            });
+            $("#Sort").change(function () {
+                CheckSort();
+            });
+            function CheckBrand() {
+                var brand = $("#Brand");
+                var _brand = brand.val().trim();
+                if (_brand.length == 0) {
+                    brand.parent().attr('title', "不能为空");
+                    brand.parent().addClass('has-error');
+                    brand.next().removeClass('field-validation-valid');
+                } else {
+                    brand.parent().attr('title', "填写正确");
+                    brand.parent().removeClass('has-error');
+                    brand.next().addClass('field-validation-valid');
+                    $("#Cbrand").val("1");
+                    if ($("#BrandId").val() == 0) {
+                        //唯一性检查开始
+                        $.ajax({
+                            url: "/Dic/validCarBrandUnique?Brand=" + _brand,
+                            type: "get",
+                            dataType: "json",
+                            success: function (data) {
+                                if (data == 1) {
+                                    brand.parent().attr('title', "填写正确");
+                                    brand.parent().removeClass('has-error');
+                                    brand.next().addClass('field-validation-valid');
+                                    $("#Cbrand").val("1");
+                                } else if (data == 0) {
+                                    brand.parent().attr('title', "名称已经被占用");
+                                    brand.parent().addClass('has-error');
+                                    brand.next().removeClass('field-validation-valid');
+                                    $("#Cbrand").val("0");
+                                }
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                //alert("保存失败");
+                            }
+                        });
+                    }
+                    //唯一性检查结束
+                }
+
+
+            }
+            function CheckSort() {
+                var sort = $("#Sort");
+                var _Sort = sort.val().trim();
+                if (_Sort.length != 1) {
+                    sort.parent().attr('title', "请选择首字母");
+                    sort.parent().addClass('has-error');
+                    sort.next().removeClass('field-validation-valid');
+                    $("#Csort").val("0");
+                } else {
+                    sort.parent().attr('title', "填写正确");
+                    sort.parent().removeClass('has-error');
+                    sort.next().addClass('field-validation-valid');
+                    $("#Csort").val("1");
+                }
+            }
+        });
+
+    </script>
+}
+
+@using (Html.BeginForm("PicTest", "Dic", FormMethod.Post, new { enctype = "multipart/form-data", @class = "Edit_From" }))
+{
+    <div class="form-horizontal">
+        <h4>@ViewBag.Title</h4>
+        <br />
+        <input type="hidden" id="Cbrand" value="0" />
+        <input type="hidden" id="Csort" value="0" />
+        <input type="hidden" value="@Model.ID" id="BrandId" />
+        @*@Html.HiddenFor(m => m.PanrentID)*@
+        @Html.HiddenFor(m => m.State)
+        @Html.HiddenFor(m => m.AddTime)
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="Brand">名称</label>
+            <div class="col-xs-9">
+
+                @if (Model.ID == 0)
+                {
+                    <input type="text" value="@Model.Brand" name="Brand" id="Brand" class="form-control single-line">
+                }
+                else
+                {
+                    @Html.HiddenFor(m => m.Brand)
+
+                    <input type="text" value="@Model.Brand" class="form-control single-line" readonly>
+                }
+
+                <span class="required"> * </span>
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="Brand">图片</label>
+            <div class="col-xs-9">
+                @if (Model.Pic == null)
+                {
+                    @:无图片
+                }
+                else
+                {
+                    <img width="150" height="150" src="@Url.Action("GetImage", "Dic", new { Model.ID })" />
+
+                }
+                <input type="file" name="CarImage" />
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="_Sort">首字母</label>
+            <div class="col-xs-9">
+                <select class="form-control single-line" id="Sort" name="Sort">
+                    <option value='' selected>选择首字母...</option>";
+                    @for (var i = 65; i <= 90; i++)
+                    {
+                        try
+                        {
+                            <option value="@Convert.ToChar(i).ToString()" @(Convert.ToChar(i).ToString().Trim() == Model.Sort.ToString().Trim() ? "selected" : "")>@Convert.ToChar(i).ToString()</option>
+                        }
+                        catch
+                        {
+                            <option value="@Convert.ToChar(i).ToString()">@Convert.ToChar(i).ToString()</option>
+
+                        }
+                    }
+                </select>
+                <span class="required"> * </span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="BrandCode">品牌代码</label>
+            <div class="col-xs-9">
+                <input type="text" value="@Model.BrandCode" placeholder="对应于故障码解析接口的品牌代码" title="对应于故障码解析接口的品牌代码" name="BrandCode" id="BrandCode" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="dev_cs">车系参数</label>
+            <div class="col-xs-9">
+                <input type="number" min="0" value="@Model.dev_cs" placeholder="对应于OBD的车系参数" title="对应于OBD的车系参数" name="dev_cs" id="dev_cs" class="form-control single-line">
+                <span class="glyphicon form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <input id="btnSubmit" type="button" value="保存" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="alert alert-success feedinfo" role="alert">@TempData["Result"]</div>
+    </div>
+}
+

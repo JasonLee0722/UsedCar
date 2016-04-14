@@ -1,0 +1,105 @@
+﻿@model IEnumerable<SysModule>
+
+@{
+    ViewBag.Title = "系统模块管理";
+    ViewBag.SubTitle = "系统模块的添加、修改、删除";
+    ViewBag.ParentTitle = "系统管理";
+
+    int _PID = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
+    int iItem = 1; //ViewBag.NumberStart;
+    string _UrlReferrer = null;
+    string _UrlRefPathAndQuery = Request.UrlReferrer == null ? "" : Request.UrlReferrer.PathAndQuery;
+    if (Request.Url.PathAndQuery.IndexOf("/SysManage/SysModuleIndex") != -1 && _PID > 0
+        || _UrlRefPathAndQuery.IndexOf("/SysManage/SysActionIndex") != -1)
+    {
+        _UrlReferrer = "/SysManage/SysModuleIndex/0";
+    }
+    //----------定义导航菜单----------
+    var NavList = new Dictionary<string, string>();
+    NavList.Add("系统管理", "#");
+    if (_PID > 0)
+    {
+        NavList.Add("系统模块管理", "/SysManage/SysModuleIndex/0");
+        ViewBag.Title = "子模块管理";
+    }
+    ViewBag.NavList = NavList;
+    //----------定义导航菜单----------
+}
+
+@section Styles{
+    @Styles.Render("~/Content/ColorBox/css1")
+    <style type="text/css">
+    </style>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/ColorBox")
+    <script src="~/Scripts/UserJS/TableManage.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            TableManage.init();
+        });
+    </script>
+}
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th width="50">
+            序号
+        </th>
+        <th>
+            模块名称
+        </th>
+        @if (_PID > 0)
+        {
+            <th>
+                父模块
+            </th>
+        }
+        <th>
+            排序
+        </th>
+        @*<th>
+            添加时间
+        </th>*@
+        <th>
+            <a href="#" onclick="TableManage.Edit('/SysManage/SysModuleEdit?PID=@_PID', 400, 350)">添加</a>
+            @if (!string.IsNullOrWhiteSpace(_UrlReferrer))
+            {
+                @: |
+                <a href="@_UrlReferrer">返回</a>
+            }
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(iItem++)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @if (_PID > 0)
+            {
+                <td>
+                    @Html.DisplayForLinkContent(item.ParentID.ToString(), (IDictionary<string, string>)ViewBag.SysModuleDisplayList)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Sort)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.AddTime)
+            </td>*@
+            <td>
+                <a href="#" onclick="TableManage.Edit('/SysManage/SysModuleEdit/@item.ID',400,350)">编辑</a> |
+                <a href="#" onclick="TableManage.Delete('/SysManage/SysModuleDelete/@item.ID')">删除</a> |
+                @if (item.ParentID == 0)
+                {
+                    <a href="/SysManage/SysModuleIndex/@item.ID">子模块管理</a> @: |
+                }
+                <a href="/SysManage/SysActionIndex/@item.ID?MPID=@_PID">模块功能管理</a>
+            </td>
+        </tr>
+    }
+
+</table>
